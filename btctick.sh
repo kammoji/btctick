@@ -20,7 +20,7 @@ then
 	date
 	echo "Bitcoin market cap is: $"$cap
 	echo "Bitcoin average price across exchanges is: "$price
-	echo "Bitcoin trading volume is: "$volume
+	echo "Bitcoin trading volume (last 24h) is: "$volume
 	echo
 	echo "Data retrieved from http://coinmarketcap.com"
 
