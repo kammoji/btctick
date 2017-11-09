@@ -1,0 +1,21 @@
+                        <a class="currency-name-container" href="/currencies/bitcoin/">Bitcoin</a>
+                    </td>
+                    
+                    <td class="no-wrap market-cap text-right" data-usd="1.22990596479e+11" data-btc="16671537.0" >
+                        
+                        $122,990,596,479
+                        
+                    </td>
+                    <td class="no-wrap text-right">
+                        <a href="/currencies/bitcoin/#markets" class="price" data-usd="7377.28" data-btc="1.0" >$7377.28</a>
+                    </td>
+                    <td class="no-wrap text-right">
+                        <a href="/currencies/bitcoin/#markets" class="volume" data-usd="4601740000.0" data-btc="624046.0" >$4,601,740,000</a>
+                    </td>
+                    <td class="no-wrap text-right circulating-supply">
+                        <a href="http://blockchain.info" target="_blank"  data-supply="16671537.0">
+                            <span data-supply-container>
+                            
+                                16,671,537
+                            
+                            </span>
