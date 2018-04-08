@@ -1,5 +1,5 @@
 
-Bitcoin ticker - Copyleft - Juhana Kammonen 2017
+Bitcoin ticker - Copyleft - Juhana Kammonen 2018
 
 Install:
 
