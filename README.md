@@ -24,6 +24,7 @@ Then just run the shell script btctick.sh on your Linux shell, e.g:
 
 The script unclones as runnable so simply
 
+~¤ ./chmod 775 btctick.sh
 ~$ ./btctick.sh
 
 will also do.
