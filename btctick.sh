@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bitcoin ticker
-# Retrieves data from coinmarketcap.com website and outputs
+# Retrieves bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 2018
 
 date=`date | sed 's/ /_/g'`
