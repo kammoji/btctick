@@ -2,7 +2,7 @@
 
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
-# Copyleft Juhana Kammonen 2018
+# Copyleft Juhana Kammonen 05/2018
 
 date=`date | sed 's/ /_/g'`
 
