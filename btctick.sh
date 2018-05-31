@@ -27,8 +27,8 @@ then
 	echo "Data retrieved from http://coinmarketcap.com"
 
 	#cleanup:
-	#rm "coinmarketcap_data_$date.html"
-	#rm "coinmarketcap_data_$date"
+	rm "coinmarketcap_data_$date.html"
+	rm "coinmarketcap_data_$date"
 
 else
 	echo
