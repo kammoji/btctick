@@ -6,12 +6,15 @@
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
+
+cd $SCRIPTPATH
+
 BRANCH=$(git symbolic-ref HEAD)
 
 check_update() {
 
+    echo
     echo "Running btctick.sh version check..."
-    cd $SCRIPTPATH
 
     if [ "$BRANCH" == 'refs/heads/master' ]
 
@@ -22,7 +25,6 @@ check_update() {
         	echo "WARN: There is a newer version of btctick.sh available, the version you are running may not work correctly"
 		echo "INFO: Type \"git pull\" to update"
 		echo
-
     fi
 
 }
