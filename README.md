@@ -26,7 +26,7 @@ bash btctick.sh
 The script unclones as runnable so simply
 
 <pre>
-./chmod 775 btctick.sh
+chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
