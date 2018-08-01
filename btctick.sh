@@ -13,18 +13,14 @@ BRANCH=$(git symbolic-ref HEAD)
 
 check_update() {
 
-    echo
-    echo "Running btctick.sh version check..."
+    if [ "$BRANCH" != 'refs/heads/master' ]
 
-    if [ "$BRANCH" == 'refs/heads/master' ]
-
-	then
-		echo "INFO: btctick.sh is the latest version, great!"
-		echo "-----------"
-    	else
+	   then
+	    	echo
         	echo "WARN: There is a newer version of btctick.sh available, the version you are running may not work correctly"
 		echo "INFO: Type \"git pull\" to update"
 		echo
+
     fi
 
 }
