@@ -9,16 +9,18 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
-BRANCH=$(git symbolic-ref HEAD)
+#Update check preparations:
+git remote update > /dev/null
+STATUS=$(git status -s -u no | grep -A 1 "Your")
 
 check_update() {
 
-    if [ "$BRANCH" != 'refs/heads/master' ]
+    if [ ! -z "$STATUS" ]
 
 	   then
 	    	echo
-        	echo "WARN: There is a newer version of btctick.sh available, the version you are running may not work correctly"
-		echo "INFO: Type \"git pull\" to update"
+        	echo "WARN: There is a newer version of btctick.sh available, the version you are running may not work correctly."
+		echo $STATUS
 		echo
 
     fi
