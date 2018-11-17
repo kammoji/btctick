@@ -50,8 +50,8 @@ then
 	echo "Bitcoin trading volume (last 24h) is: "$volume
 	echo
 	echo "Data retrieved from http://coinmarketcap.com"
-	echo
 	echo "Diggin' this widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo
 
 	#cleanup:
 	rm "coinmarketcap_data_$date.html"
