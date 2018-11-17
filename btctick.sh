@@ -50,6 +50,8 @@ then
 	echo "Bitcoin trading volume (last 24h) is: "$volume
 	echo
 	echo "Data retrieved from http://coinmarketcap.com"
+	echo
+	echo "Diggin' this widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 
 	#cleanup:
 	rm "coinmarketcap_data_$date.html"
@@ -58,6 +60,6 @@ then
 else
 	echo
 	echo "ERROR: unable to retrieve index.html from http://coinmarketcap.com"
-	echo "Please check internet connection."
+	echo "Please check your internet connection."
 	echo
 fi

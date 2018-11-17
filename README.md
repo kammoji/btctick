@@ -1,7 +1,7 @@
 
-Bitcoin market ticker - Copyleft - Juhana Kammonen 2018
+#Bitcoin market ticker - Copyleft - Juhana Kammonen 2018
 
-Install:
+#Install:
 
 Install git if you have not already:
 
@@ -32,6 +32,12 @@ chmod 775 btctick.sh
 
 will also do.
 
+#Update to latest version:
+
+<pre>
+cd btctick
+git pull
+</pre>
 
 Questions, suggestions?
 Contact juhana[a]konekettu.fi
