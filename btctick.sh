@@ -3,6 +3,7 @@
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018
+# Updated last: 30/08/2021 - adjusted greps for CoinMarketCap site configuration as of the update date :)
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
