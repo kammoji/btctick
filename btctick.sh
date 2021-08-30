@@ -20,6 +20,7 @@ check_update() {
 	   then
 	    	echo
         	echo "WARN: There is a newer version of btctick.sh available, the version you are running may not work correctly."
+		echo "INFO: Go to your install location where your 'btctick.sh' is located and type 'git pull' to update."
 		echo $STATUS
 		echo
 
@@ -36,20 +37,25 @@ wget -q --output-document coinmarketcap_data_$date.html coinmarketcap.com/curren
 if [ -s "coinmarketcap_data_$date.html" ]
 then
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
-	cap=`grep -o -P 'Market\sCap.{0,40}' coinmarketcap_data_$date\.html | cut -d">" -f 3 | cut -d"<" -f1 | cut -d" " -f 1`
+	cap=`grep -o -P 'Market Cap</caption.{0,100}' coinmarketcap_data_$date\.html | cut -d">" -f 8 | cut -d"<" -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`grep -o -P 'Price.{0,30}' coinmarketcap_data_$date\.html | cut -d">" -f 3 | cut -d"<" -f1 | cut -d" " -f 1`
-	volume=`grep -o -P 'Volume\s.{0,60}' coinmarketcap_data_$date\.html | cut -d">" -f 4 | cut -d"<" -f1 | cut -d" " -f 1`
+	price=`grep -o -P 'priceValue .{0,40}' coinmarketcap_data_$date\.html | cut -d">" -f 2 | cut -d"<" -f 1`
+	volume=`grep -o -P 'Volume</th.{0,40}' coinmarketcap_data_$date\.html | cut -d">" -f 3 | cut -d"<" -f 1`
 	echo
-	echo "btctick.sh Bitcoin ticker - Copyleft Juhana Kammonen 2018"
+	echo "----------"
+	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018"
+	echo "----------"
+	echo
+	echo "Last update 08/2021 - All reported prices are US dollars ($)"
+	echo "btctick.sh comes with NO WARRANTY whatsoever."
 	echo
 	date
-	echo "Bitcoin market cap is:"$cap
+	echo "Bitcoin market cap is: "$cap
 	echo "Bitcoin average price across exchanges is: "$price
 	echo "Bitcoin trading volume (last 24h) is: "$volume
 	echo
-	echo "Data retrieved from http://coinmarketcap.com"
+	echo "Data retrieved from https://coinmarketcap.com"
 	echo "Diggin' this widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
@@ -58,7 +64,7 @@ then
 
 else
 	echo
-	echo "ERROR: unable to retrieve index.html from http://coinmarketcap.com"
+	echo "ERROR: unable to retrieve data from https://coinmarketcap.com"
 	echo "Please check your internet connection."
 	echo
 fi
