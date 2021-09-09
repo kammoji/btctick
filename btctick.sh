@@ -29,6 +29,7 @@ check_update() {
 
 }
 
+#Check available updates to start:
 check_update
 
 date=`date | sed 's/ /_/g'`
