@@ -3,7 +3,7 @@
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018
-# Updated last: 30/08/2022 - adjusted greps for CoinMarketCap site configuration
+# Updated last: 24/10/2022 - adjusted greps/zcats for CoinMarketCap current site configuration
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -34,16 +34,18 @@ check_update
 
 date=`date | sed 's/ /_/g'`
 
+# Master branch observation 24 Oct 2022: It looks like the following download object has turned into a binary! -> add a zcat pipe
 wget -q --output-document coinmarketcap_data_$date.html coinmarketcap.com/currencies/bitcoin
 
 if [ -s "coinmarketcap_data_$date.html" ]
 then
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
-	cap=`grep -o -P 'Market Cap</caption.{0,100}' coinmarketcap_data_$date\.html | cut -d">" -f 8 | cut -d"<" -f 1`
+	# Master branch observation 24 Oct 2022: The cap and volume greps return two lines -> get only the first line with head:
+	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`grep -o -P 'priceValue .{0,40}' coinmarketcap_data_$date\.html | cut -d">" -f 2 | cut -d"<" -f 1`
-	volume=`grep -o -P 'Volume</th.{0,40}' coinmarketcap_data_$date\.html | cut -d">" -f 3 | cut -d"<" -f 1`
+	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'priceValue .{0,40}' | cut -d">" -f 3 | cut -d"<" -f 1`
+	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
 	echo
 	echo "----------"
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018"
@@ -61,8 +63,8 @@ then
 	echo "Diggin' this widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
-	#cleanup:
-	rm "coinmarketcap_data_$date.html"
+	#CLEANUP, comment away with "#" the following line to enable debugging:
+	#rm "coinmarketcap_data_$date.html"
 
 else
 	echo
