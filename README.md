@@ -41,6 +41,6 @@ git pull
 
 TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available.
 
-Questions, suggestions?
+Cool suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
 
