@@ -35,30 +35,34 @@ check_update
 date=`date | sed 's/ /_/g'`
 
 # Master branch observation 24 Oct 2022: It looks like the following download object has turned into a binary! -> add a zcat pipe
-# Update 3 Nov 2022, this was changed back to cat.
-wget -q --output-document coinmarketcap_data_$date.html coinmarketcap.com/currencies/bitcoin
+# Update 3 Nov 2022 download object was plaintext. AND: Update 13 Nov 2022 it's binary again!
+wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/currencies/bitcoin
 
 if [ -s "coinmarketcap_data_$date.html" ]
 then
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
 	# Master branch observation 24 Oct 2022: The cap and volume greps return two lines -> get only the first line with head:
-	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
+	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'priceValue .{0,40}' | cut -d">" -f 3 | cut -d"<" -f 1`
-	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
+	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'priceValue .{0,40}' | cut -d">" -f 3 | cut -d"<" -f 1`
+	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume24h.{0,30}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
+	#Enter volume parser:
+	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2022-11-04 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2022-11-14 - All reported prices are US dollars ($)"
 	echo "btctick ships with NO WARRANTY whatsoever."
+	echo "UPDATE Mon 28 Nov 2022: A historical default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price history data to inspect later."
+	echo "A file called 'price_history' in the folder gets a line appended every time btctick.sh is run."
 	echo
 	date
 	echo "Bitcoin market cap is: "$cap
 	echo "Bitcoin average price across exchanges is: "$price
-	echo "Bitcoin trading volume (last 24h) is: "$volume
+	echo "Bitcoin trading volume (last 24h) is: "\$$volume_parsed
 	echo
 	echo "Data retrieved from https://coinmarketcap.com"
 	echo "Diggin' this little script widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
@@ -66,6 +70,12 @@ then
 
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"
+	#APPEND price to home directory folder btctick_history in a file called price_history:
+	if [[ ! -d ~/btctick_history ]]
+		then
+			mkdir ~/btctick_history
+	fi
+	echo $date $price >> ~/btctick_history/price_history
 
 else
 	echo
