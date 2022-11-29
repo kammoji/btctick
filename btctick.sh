@@ -54,7 +54,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2022-11-14 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2022-11-29 - All reported prices are US dollars ($)"
 	echo "btctick ships with NO WARRANTY whatsoever."
 	echo "UPDATE Mon 28 Nov 2022: A historical default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price history data to inspect later."
 	echo "A file called 'price_history' in the folder gets a line appended every time btctick.sh is run."
