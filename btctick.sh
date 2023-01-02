@@ -51,12 +51,12 @@ then
 	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
-	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018"
+	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2022-11-29 - All reported prices are US dollars ($)"
-	echo "btctick ships with NO WARRANTY whatsoever."
-	echo "UPDATE Mon 28 Nov 2022: A historical default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price history data to inspect later."
+	echo "You are at btctick.sh master branch 2023-01-02 - All reported prices are US dollars ($)"
+	echo "btctick has NO WARRANTY, all use at your own discretion"
+	echo "UPDATE Mon 28 Nov 2022: A default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price historical data to utilize later."
 	echo "A file called 'price_history' in the folder gets a line appended every time btctick.sh is run."
 	echo
 	date
