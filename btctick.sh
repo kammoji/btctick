@@ -10,6 +10,23 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
+#Spinning icon stuff:
+
+spin[0]="-"
+spin[1]="\\"
+spin[2]="|"
+spin[3]="/"
+
+echo -n "Initializing...${spin[0]}"
+for i in `seq 0 3`;
+	do
+  		for j in "${spin[@]}"
+  			do
+        		echo -ne "\b$j"
+        		sleep 0.2
+		done
+	done
+
 #Update check preparations:
 git remote update > /dev/null
 STATUS=$(git status -s -u no | grep -A 1 "Your")
@@ -54,7 +71,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-01-02 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-01-03 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY, all use at your own discretion"
 	echo "UPDATE Mon 28 Nov 2022: A default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price historical data to utilize later."
 	echo "A file called 'price_history' in the folder gets a line appended every time btctick.sh is run."

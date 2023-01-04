@@ -1,5 +1,5 @@
 
-#Bitcoin market ticker - Copyleft - Juhana Kammonen 2018
+#Bitcoin market ticker - Copyleft - Juhana Kammonen 2018-2023
 
 #Install:
 
