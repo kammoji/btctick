@@ -12,10 +12,16 @@ cd $SCRIPTPATH
 
 #Spinning icon stuff:
 
+LG='\033[1;32m'
+LC='\033[1;36m'
+NC='\033[0m'
+
 spin[0]="-"
-spin[1]="\\"
+spin[1]="${LG}\\"
 spin[2]="|"
-spin[3]="/"
+spin[3]="${LC}/${NC}"
+
+
 
 echo -n "Initializing...${spin[0]}"
 for i in `seq 0 3`;
@@ -23,7 +29,7 @@ for i in `seq 0 3`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.2
+        		sleep 0.1
 		done
 	done
 
