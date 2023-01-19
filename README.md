@@ -23,14 +23,14 @@ Then just run the shell script btctick.sh on your Linux shell, e.g:
 bash btctick.sh
 </pre>
 
-The script clones as runnable so simply
+The also script clones as runnable so simply
 
 <pre>
 chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-will also do.
+will also do in a BASH shell.
 
 #Update to latest version:
 
@@ -39,8 +39,8 @@ cd btctick
 git pull
 </pre>
 
-TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available.
+TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
 
-Cool suggestions, questions, anything?
+Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
 
