@@ -24,12 +24,12 @@ spin[3]="${LC}/${NC}"
 
 
 echo -n "Initializing...${spin[0]}"
-for i in `seq 0 3`;
+for i in `seq 0 4`;
 	do
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.1
+        		sleep 0.07
 		done
 	done
 
@@ -77,7 +77,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-01-03 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-01-23 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY, all use at your own discretion"
 	echo "UPDATE Mon 28 Nov 2022: A default was added, a file called 'price_history' in folder '~/btctick_history' is created for saving a local price historical data to utilize later."
 	echo "A file called 'price_history' in the folder gets a line appended every time btctick.sh is run."
