@@ -29,7 +29,7 @@ for i in `seq 0 4`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.065
+        		sleep 0.066
 		done
 	done
 
@@ -78,7 +78,7 @@ then
 	echo "----------"
 	echo
 	echo "You are at btctick.sh master branch 2023-02-03 - All reported prices are US dollars ($)"
-	echo "btctick has NO WARRANTY, use at your own discretion."
+	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo "A file called 'price_history' in folder '~/btctick_history' is created for saving a local price historical data to utilize later."
 	echo
 	date
