@@ -77,9 +77,9 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-02-03 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-02-13 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY. All use at your own discretion."
-	echo "A file called 'price_history' in folder '~/btctick_history' is created for saving a local price historical data to utilize later."
+	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
 	date
 	echo "Bitcoin market cap is: "$cap
@@ -93,11 +93,11 @@ then
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"
 	#APPEND price to home directory folder btctick_history in a file called price_history:
-	if [[ ! -d ~/btctick_history ]]
+	if [[ ! -d ~/.btctick_history ]]
 		then
-			mkdir ~/btctick_history
+			mkdir ~/.btctick_history
 	fi
-	echo $date $price >> ~/btctick_history/price_history
+	echo $date $price >> ~/.btctick_history/price_history
 
 else
 	echo
