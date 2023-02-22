@@ -29,7 +29,7 @@ for i in `seq 0 4`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.066
+        		sleep 0.065
 		done
 	done
 
@@ -77,13 +77,13 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-02-13 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-02-22 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
 	date
 	echo "Bitcoin market cap is: "$cap
-	echo "Bitcoin average price across exchanges is: "$price
+	echo "Bitcoin avg. price across exchanges is: "$price
 	echo "Bitcoin trading volume (last 24h) is: "\$$volume_parsed
 	echo
 	echo "Data retrieved from https://coinmarketcap.com"
@@ -101,7 +101,7 @@ then
 
 else
 	echo
-	echo "ERROR: unable to retrieve data from https://coinmarketcap.com"
+	echo "ERROR: no data link to https://coinmarketcap.com"
 	echo "Please check your internet connection."
 	echo
 fi
