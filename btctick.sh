@@ -10,6 +10,45 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
+#Command line option parser:
+#if [ $1 == "-h" ] && [ -z $2 ]        # Parse command line options:
+#then
+#
+#        echo '[TODO] Output full help'
+#        exit 1
+#else    # Parse command line options
+#
+#        btctick_command=$0
+#        while [[ $# > 1 ]]
+#        do
+#        key="$1"
+
+#        case $key in
+#            --history)
+#            PACBIO_SCAFFOLDER_RESULTS="$2"
+#            shift # past argument
+#            ;;
+#            -g|--gui)
+#            THREADS="$2"
+#            shift # past argument
+#            ;;
+#            -h|--help)
+#            THREADS="$2"
+#            shift # past argument
+#	     ;;
+#            *)
+                    # unknown option
+#                echo [ERROR] Unknown 'option(s)' passed, please check 'command' line
+#                echo Usage: btctick.sh '[--history, -g]'
+#		 echo For full help, run btctick.sh -h
+#                echo 'Contact juhana.kammonen@konekettu.fi for further support'
+#                echo
+#                exit 1
+
+#            ;;
+#	 esac
+#	 done
+#        shift
 #Spinning icon stuff:
 
 LG='\033[1;32m'
@@ -20,8 +59,6 @@ spin[0]="-"
 spin[1]="${LG}\\"
 spin[2]="|"
 spin[3]="${LC}/${NC}"
-
-
 
 echo -n "Initializing...${spin[0]}"
 for i in `seq 0 4`;
@@ -77,7 +114,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-02-22 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-03-02 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo

@@ -40,6 +40,8 @@ git pull
 </pre>
 
 TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
+TODO: Set historical to optional and not default
+TODO: Graphical user interface
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
