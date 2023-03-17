@@ -10,45 +10,6 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
-#Command line option parser:
-#if [ $1 == "-h" ] && [ -z $2 ]        # Parse command line options:
-#then
-#
-#        echo '[TODO] Output full help'
-#        exit 1
-#else    # Parse command line options
-#
-#        btctick_command=$0
-#        while [[ $# > 1 ]]
-#        do
-#        key="$1"
-
-#        case $key in
-#            --history)
-#            PACBIO_SCAFFOLDER_RESULTS="$2"
-#            shift # past argument
-#            ;;
-#            -g|--gui)
-#            THREADS="$2"
-#            shift # past argument
-#            ;;
-#            -h|--help)
-#            THREADS="$2"
-#            shift # past argument
-#	     ;;
-#            *)
-                    # unknown option
-#                echo [ERROR] Unknown 'option(s)' passed, please check 'command' line
-#                echo Usage: btctick.sh '[--history, -g]'
-#		 echo For full help, run btctick.sh -h
-#                echo 'Contact juhana.kammonen@konekettu.fi for further support'
-#                echo
-#                exit 1
-
-#            ;;
-#	 esac
-#	 done
-#        shift
 #Spinning icon stuff:
 
 LG='\033[1;32m'
@@ -114,7 +75,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-03-02 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-03-17 - All reported prices are US dollars ($)"
 	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
@@ -127,6 +88,50 @@ then
 	echo "Diggin' this little script widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
+	#Command line option parser:
+	if [ -z $1 ]
+	then
+		echo "For help with options run 'btctick.sh -h'"
+	elif [ $1 == "-h" ] && [ -z $2 ]        # Parse command line options:
+	then
+
+        	echo '[TODO] Output full help'
+		rm "coinmarketcap_data_$date.html"
+        	exit 1
+	else    # Parse command line options
+	
+	        btctick_command=$0
+        	while [[ $# > 1 ]]
+        	do
+        		key="$1"
+
+        		case $key in
+            		--history)
+            		PACBIO_SCAFFOLDER_RESULTS="$2"
+            		shift # past argument
+            		;;
+            		-g|--gui)
+            		THREADS="$2"
+            		shift # past argument
+            		;;
+            		-h|--help)
+            		THREADS="$2"
+            		shift # past argument
+             		;;
+            		*)
+                    	# unknown option
+                	echo [ERROR] Unknown 'option(s)' passed, please check 'command' line
+                	echo Usage: btctick.sh '[--history, -g]'
+                	echo For full help, run btctick.sh -h
+                	echo 'Contact juhana.kammonen@konekettu.fi for further support'
+                	echo
+                	exit 1
+
+            		;;
+        		esac
+        		done
+        		shift
+	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"
 	#APPEND price to home directory folder btctick_history in a file called price_history:
