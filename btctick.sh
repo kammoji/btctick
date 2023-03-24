@@ -107,7 +107,12 @@ then
 
         		case $key in
             		--history)
-            		PACBIO_SCAFFOLDER_RESULTS="$2"
+			#APPEND price to home directory folder btctick_history in a file called price_history:
+        		if [[ ! -d ~/.btctick_history ]]
+                		then
+                        		mkdir ~/.btctick_history
+        		fi
+        		echo $date $price >> ~/.btctick_history/price_history
             		shift # past argument
             		;;
             		-g|--gui)
@@ -134,13 +139,6 @@ then
 	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"
-	#APPEND price to home directory folder btctick_history in a file called price_history:
-	if [[ ! -d ~/.btctick_history ]]
-		then
-			mkdir ~/.btctick_history
-	fi
-	echo $date $price >> ~/.btctick_history/price_history
-
 else
 	echo
 	echo "ERROR: no data link to https://coinmarketcap.com"

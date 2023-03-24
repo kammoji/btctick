@@ -12,7 +12,7 @@ sudo apt-get install git
 Clone the repository to your desired location:
 
 <pre>
-cd YOUR_DESIRED_LOCATION
+cd /home/USERNAME/bin
 git clone https://github.com/kammoji/btctick.git
 cd btctick
 </pre>
@@ -40,7 +40,7 @@ git pull
 </pre>
 
 TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
-TODO: Set historical to optional and not default
+TODO: Set historical to optional and not default. Update 03/2023: is now optional but option not working yet
 TODO: Graphical user interface
 
 Suggestions, questions, anything?
