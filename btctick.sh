@@ -3,7 +3,6 @@
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018
-# Updated last: 24/10/2022 - adjusted greps/zcats for CoinMarketCap current site configuration
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -75,7 +74,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-03-22 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-03-26 - All reported prices are US dollars ($)"
 	echo "btctick is NO WARRANTY. Use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
@@ -128,7 +127,7 @@ then
                 	echo [ERROR] Unknown 'option(s)' passed, please check 'command' line
                 	echo Usage: btctick.sh '[--history, -g]'
                 	echo For full help, run btctick.sh -h
-                	echo 'Contact juhana.kammonen@konekettu.fi for further support'
+                	echo 'Contact juhana@konekettu.fi for further support'
                 	echo
                 	exit 1
 
