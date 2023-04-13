@@ -10,7 +10,7 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd $SCRIPTPATH
 
 #Spinning icon stuff:
-
+spinner() {
 LG='\033[1;32m'
 LC='\033[1;36m'
 NC='\033[0m'
@@ -26,9 +26,10 @@ for i in `seq 0 4`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.066
+        		sleep 0.06
 		done
 	done
+}
 
 #Update check preparations:
 git remote update > /dev/null
@@ -60,6 +61,7 @@ wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/curr
 
 if [ -s "coinmarketcap_data_$date.html" ]
 then
+	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
 	# Master branch observation 24 Oct 2022: The cap and volume greps return two lines -> get only the first line with head:
 	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
@@ -74,7 +76,7 @@ then
 	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-03-26 - All reported prices are US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-04-13 - All prices are in US dollars ($)"
 	echo "btctick is NO WARRANTY. Use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
@@ -133,8 +135,8 @@ then
 
             		;;
         		esac
-        		done
-        		shift
+        	done
+        	shift
 	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"

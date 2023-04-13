@@ -9,28 +9,28 @@ Install git if you have not already:
 sudo apt-get install git
 </pre>
 
-Clone the repository to your desired location:
+Clone the repository to your location, e.g. to your home:
 
 <pre>
-cd /home/USERNAME/bin
+cd
 git clone https://github.com/kammoji/btctick.git
 cd btctick
 </pre>
 
-Then just run the shell script btctick.sh on your Linux shell, e.g:
+Then run the shell script btctick.sh on your Linux shell, e.g:
 
 <pre>
 bash btctick.sh
 </pre>
 
-The also script clones as runnable so simply
+Script clones as runnable so simply
 
 <pre>
 chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-will also do in a BASH shell.
+will also do in BASH shell.
 
 #Update to latest version:
 
@@ -40,7 +40,7 @@ git pull
 </pre>
 
 TODO: Check for updates upon running. Currently it works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
-TODO: Set historical to optional and not default. Update 03/2023: is now optional but option not working yet
+TODO: Set historical to optional and not default. Update 04/2023: is now optional but option not working yet
 TODO: Graphical user interface
 
 Suggestions, questions, anything?
