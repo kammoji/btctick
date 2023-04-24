@@ -26,7 +26,7 @@ for i in `seq 0 4`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.06
+        		sleep 0.068
 		done
 	done
 }
@@ -73,10 +73,10 @@ then
 	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
-	echo "btctick.sh Bitcoin USD price ticker - Copyleft Juhana Kammonen 2018-2023"
+	echo "btctick.sh Bitcoin market price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-04-13 - All prices are in US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-04-24 - All prices are in US dollars ($)"
 	echo "btctick is NO WARRANTY. Use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
