@@ -76,7 +76,7 @@ then
 	echo "btctick.sh Bitcoin market price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-04-24 - All prices are in US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-04-26 - All prices are in US dollars ($)"
 	echo "btctick is NO WARRANTY. Use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
@@ -92,51 +92,62 @@ then
 	#Command line option parser:
 	if [ -z $1 ]
 	then
-		echo "For help with options run 'btctick.sh -h'"
-	elif [ $1 == "-h" ] && [ -z $2 ]        # Parse command line options:
+		echo "For help with some cool options run 'btctick.sh -h'"
+	elif [ $1 == "-h" ] # Parse command line options:
 	then
 
-        	echo '[TODO] Output full help'
-		rm "coinmarketcap_data_$date.html"
-        	exit 1
+		echo
+        	echo 'btctick.sh additional OPTIONS:'
+		echo
+		echo '--history : Creates a hidden folder with historical data into your home folder at ~/.btctick_history'
+		echo '            A timestamp and BTC/USD price will be appended as a line into a file called price_history in the hidden folder.'
+		echo
+		echo '-g | --gui : launches btctick in GUI mode written in C'
+		echo
+		echo 'EXAMPLES:'
+		echo
+		echo './btctick.sh --history     : run btctick once and create and save the historical data'
+		echo
+		echo './btctick.sh -g --history  : run btctick in GUI mode and save the historical data'
+		echo
+#        	exit 1
 	else    # Parse command line options
 	
 	        btctick_command=$0
-        	while [[ $# > 1 ]]
+        	while [[ $# -gt 0 ]]
         	do
-        		key="$1"
-
-        		case $key in
+        	key="$1"
+        	case $key in
             		--history)
 			#APPEND price to home directory folder btctick_history in a file called price_history:
+			echo 'INFO: Price history save requested...'
         		if [[ ! -d ~/.btctick_history ]]
                 		then
+					echo 'Creating folder ~/.btctick_history...'
                         		mkdir ~/.btctick_history
         		fi
         		echo $date $price >> ~/.btctick_history/price_history
+			echo 'INFO: Successfully appended current BTC/USD price to ~/.btctick_history/price_history'
             		shift # past argument
             		;;
             		-g|--gui)
-            		THREADS="$2"
+			echo 'INFO: GUI launch requested.'
+			echo 'INFO: Launch logic not implemented in this version, so no GUI. Stay tuned...'
             		shift # past argument
             		;;
-            		-h|--help)
-            		THREADS="$2"
-            		shift # past argument
-             		;;
             		*)
-                    	# unknown option
-                	echo [ERROR] Unknown 'option(s)' passed, please check 'command' line
-                	echo Usage: btctick.sh '[--history, -g]'
-                	echo For full help, run btctick.sh -h
-                	echo 'Contact juhana@konekettu.fi for further support'
-                	echo
-                	exit 1
+                    		# unknown option
+				echo
+                		echo ERROR: Unknown 'option(s)' passed, please check 'command' line
+                		echo Usage: btctick.sh '[--history, -g]'
+                		echo For full help, run btctick.sh -h
+                		echo 'Contact juhana@konekettu.fi for further support'
+                		echo
+#			      	exit 1
 
             		;;
-        		esac
+        	esac
         	done
-        	shift
 	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging:
 	rm "coinmarketcap_data_$date.html"
