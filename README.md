@@ -40,7 +40,7 @@ git pull
 </pre>
 
 TODO: Check for updates at execute. Currently works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
-TODO: Graphical user interface. Launch command line argument works now but not the actual launch logic. Also, no content in the GUI yet.
+TODO: Graphical user interface. Launch logic works, no content in the GUI yet.
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi

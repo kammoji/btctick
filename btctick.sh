@@ -76,7 +76,7 @@ then
 	echo "btctick.sh Bitcoin market price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-04-26 - All prices are in US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-05-03 - All prices are in US dollars ($)"
 	echo "btctick is NO WARRANTY. Use at your own discretion."
 	echo "A file called 'price_history' in folder '~/.btctick_history' is created for saving a local price historical data to utilize later."
 	echo
@@ -132,7 +132,10 @@ then
             		;;
             		-g|--gui)
 			echo 'INFO: GUI launch requested.'
-			echo 'INFO: Launch logic not implemented in this version, so no GUI. Stay tuned...'
+			echo 'INFO: Launching GUI...'
+			gcc -o ./gui src/gui.c `pkg-config --cflags --libs gtk4`
+			./gui
+			rm -rf gui
             		shift # past argument
             		;;
             		*)
