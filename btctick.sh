@@ -76,8 +76,8 @@ then
 	echo "btctick.sh Bitcoin market price ticker - Copyleft Juhana Kammonen 2018-2023"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-05-03 - All prices are in US dollars ($)"
-	echo "btctick is NO WARRANTY. Use at your own discretion."
+	echo "You are at btctick.sh master branch 2023-05-04 - All prices are US dollars ($)"
+	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
 	echo "Bitcoin market cap is: "$cap
