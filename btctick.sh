@@ -73,30 +73,30 @@ then
 	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
-	echo "btctick.sh Bitcoin market price ticker - Copyleft Juhana Kammonen 2018-2023"
+	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-05-09 - All prices are US dollars ($)"
-	echo "btctick has NO WARRANTY. Use at your own discretion."
+	echo "You are at btctick.sh master branch 2023-05-15 - All prices in US dollars ($)"
+	echo "btctick has NO WARRANTY. Your discretion."
 	echo
 	date
-	echo "Bitcoin market cap is: "$cap
-	echo "Bitcoin avg. price across exchanges is: "$price
-	echo "Bitcoin trading volume (last 24h) is: "\$$volume_parsed
+	echo "Bitcoin market cap: "$cap
+	echo "Bitcoin avg. price across exchanges: "$price
+	echo "Bitcoin trading volume (last 24h): "\$$volume_parsed
 	echo
-	echo "Data retrieved from https://coinmarketcap.com"
-	echo "Diggin' this little script widget? Support us and send some BTC to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Data is from https://coinmarketcap.com"
+	echo "Diggin' this little thing? Tip: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
 	if [ -z $1 ]
 	then
-		echo "For help with some cool options run 'btctick.sh -h'"
+		echo "For help with the cool options run 'btctick.sh -h'"
 	elif [ $1 == "-h" ] # Parse command line options:
 	then
 
 		echo
-        	echo 'btctick.sh additional OPTIONS:'
+        	echo 'OPTIONS:'
 		echo
 		echo '--history : Creates a hidden folder with historical data into your home folder at ~/.btctick_history'
 		echo '            A timestamp and BTC/USD price will be appended as a line into a file called price_history in the hidden folder.'
