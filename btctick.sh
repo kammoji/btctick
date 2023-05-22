@@ -76,8 +76,8 @@ then
 	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-05-15 - All prices in US dollars ($)"
-	echo "btctick has NO WARRANTY. Your discretion."
+	echo "You are at btctick.sh master branch 2023-05-22 - All prices in US dollars ($)"
+	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
 	echo "Bitcoin market cap: "$cap
@@ -98,16 +98,16 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history : Creates a hidden folder with historical data into your home folder at ~/.btctick_history'
-		echo '            A timestamp and BTC/USD price will be appended as a line into a file called price_history in the hidden folder.'
+		echo '--history : Creates a hidden folder with historical data into your home at ~/.btctick_history'
+		echo '            A timestamp and BTC/USD price line will be appended into a file called price_history in the hidden folder.'
 		echo
-		echo '-g | --gui : launches btctick in GUI mode written in C'
+		echo '-g | --gui : launches btctick in C gtk GUI mode'
 		echo
 		echo 'EXAMPLES:'
 		echo
-		echo './btctick.sh --history     : run btctick once and create and save the historical data'
+		echo './btctick.sh --history     : run btctick once, create and save the historical data'
 		echo
-		echo './btctick.sh -g --history  : run btctick in GUI mode and save the historical data'
+		echo './btctick.sh -g --history  : run btctick in GUI mode, save the historical data'
 		echo
 #        	exit 1
 	else    # Parse command line options
