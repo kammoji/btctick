@@ -64,24 +64,26 @@ then
 	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
 	# Master branch observation 24 Oct 2022: The cap and volume greps return two lines -> get only the first line with head:
-	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Market Cap</caption.{0,100}' | head -n 1 | cut -d">" -f 8 | cut -d"<" -f 1`
+	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'priceValue .{0,40}' | cut -d">" -f 3 | cut -d"<" -f 1`
+	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume24h.{0,30}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
-	#Enter volume parser:
+	#Enter parser:
+	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
+	price_parsed=`printf "%.0f" $price | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
 	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-05-22 - All prices in US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-05-23 - All prices in US dollars ($)"
 	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
-	echo "Bitcoin market cap: "$cap
-	echo "Bitcoin avg. price across exchanges: "$price
+	echo "Bitcoin market cap: "$cap_parsed
+	echo "Bitcoin avg. price across exchanges: "\$$price_parsed
 	echo "Bitcoin trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
