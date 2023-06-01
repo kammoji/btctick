@@ -68,7 +68,7 @@ then
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
-	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume24h.{0,30}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
+	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume24h.{0,40}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	price_parsed=`printf "%.0f" $price | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -78,7 +78,7 @@ then
 	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-05-23 - All prices in US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-06-01 - All prices in US dollars ($)"
 	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
