@@ -59,7 +59,10 @@ date=`date | sed 's/ /_/g'`
 # Update 3 Nov 2022 download object was plaintext. AND: Update 13 Nov 2022 it's binary again!
 wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/currencies/bitcoin
 
-if [ -s "coinmarketcap_data_$date.html" ]
+#Check that wget result not compressed:
+FILEINFO=$(file "coinmarketcap_data_$date.html")
+
+if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
@@ -67,8 +70,8 @@ then
 	cap=`zcat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
-	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume24h.{0,40}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
+	price=`zcat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 2 | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
+	volume=`zcat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	price_parsed=`printf "%.0f" $price | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -153,7 +156,8 @@ then
         	esac
         	done
 	fi
-	#CLEANUP, comment away with "#" the following line to enable debugging:
+	#CLEANUP, comment away with "#" the following line to enable debugging
+	# Debugging is frequently needed due to coinmarketcap.com changing the site...: 
 	rm "coinmarketcap_data_$date.html"
 else
 	echo
