@@ -1,9 +1,9 @@
 
-#Bitcoin market ticker - Copyleft - Juhana Kammonen 2018-2023
+#Bitcoin market ticker - Copyleft - Juhana K 2018-2023
 
 #Install:
 
-Install git if you have not already:
+Install git if you haven't already:
 
 <pre>
 sudo apt-get install git

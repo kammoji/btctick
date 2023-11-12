@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-08-28 - US dollars ($)"
+	echo "You are at btctick.sh master branch 2023-11-12 - US dollars ($)"
 	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
