@@ -26,7 +26,7 @@ for i in `seq 0 4`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.069
+        		sleep 0.059
 		done
 	done
 }
@@ -61,7 +61,7 @@ wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/curr
 
 #Check that wget result not compressed:
 FILEINFO=$(file "coinmarketcap_data_$date.html")
-echo $FILEINFO
+#echo $FILEINFO
 if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
@@ -81,11 +81,11 @@ then
 	echo "btctick.sh - Bitcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch 2023-11-12 - US dollars ($)"
+	echo "You are at btctick.sh master branch latest edit 2023-11-24 - USD ($)"
 	echo "btctick has NO WARRANTY. Use at your own discretion."
 	echo
 	date
-	echo "Bitcoin market cap: "$cap_parsed
+	echo "Bitcoin market cap: "\$$cap_parsed
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
@@ -124,13 +124,13 @@ then
         	case $key in
             		--history)
 			#APPEND price to home directory folder btctick_history in a file called price_history:
-			echo 'INFO: Price history save requested...'
+			echo 'INFO: Price history save requested.'
         		if [[ ! -d ~/.btctick_history ]]
                 		then
-					echo 'Creating folder ~/.btctick_history...'
+					echo 'Creating new folder ~/.btctick_history ...'
                         		mkdir ~/.btctick_history
         		fi
-        		echo $date $price >> ~/.btctick_history/price_history
+        		echo $date $price_parsed >> ~/.btctick_history/price_history
 			echo 'INFO: Successfully appended current BTC/USD price to ~/.btctick_history/price_history'
             		shift # past argument
             		;;
