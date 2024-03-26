@@ -1,12 +1,12 @@
 
-#Bitcoin market ticker - Copyleft - Juhana K 2018-2023
+#Bitcoin market ticker - Copyleft - Juhana K 2018-2024
 
 #Install:
 
-Install git if you haven't already:
+Install git and wget if you haven't already:
 
 <pre>
-sudo apt-get install git
+sudo apt-get install git wget
 </pre>
 
 Clone the repository to your location, e.g. to your home:
