@@ -14,7 +14,7 @@ static void activate (GtkApplication* gui, gpointer user_data)
 
   window = gtk_application_window_new (gui);
   gtk_window_set_title (GTK_WINDOW (window), "btctick");
-  gtk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  gtk_window_set_default_size (GTK_WINDOW (window), 350, 350);
 
   price = gtk_label_new ("Label here now but price chart someday!");
   gtk_window_set_child (GTK_WINDOW (window), price);

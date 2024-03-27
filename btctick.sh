@@ -55,13 +55,16 @@ check_update
 
 date=`date | sed 's/ /_/g'`
 
-# Master branch observation 24 Oct 2022: It looks like the following download object has turned into a binary! -> add a zcat pipe
-# Update 3 Nov 2022 download object was plaintext. AND: Update 13 Nov 2022 it's binary again!
 wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/currencies/bitcoin
-
-#Check that wget result not compressed:
+#Check if coinmarketcap_data was compressed:
 FILEINFO=$(file "coinmarketcap_data_$date.html")
 #echo $FILEINFO
+if [[ $FILEINFO == *"gzip"* ]]; then
+  #uncompress and re-name:	
+  mv coinmarketcap_data_"$date".html coinmarketcap_data_"$date".gz
+  gunzip coinmarketcap_data_"$date".gz
+  mv coinmarketcap_data_"$date" coinmarketcap_data_"$date".html
+fi
 if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
