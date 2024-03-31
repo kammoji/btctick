@@ -3,13 +3,13 @@
 
 #Install:
 
-Install git and wget if you haven't already:
+Install git, gzip and wget, needed to download the script logic, fetch and, if needed, unzip downloaded data:
 
 <pre>
-sudo apt-get install git wget
+sudo apt-get install git gzip wget
 </pre>
 
-Clone the repository to your location, e.g. to your home:
+Clone the repo to your location, e.g. to your home:
 
 <pre>
 cd
@@ -30,7 +30,7 @@ chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-will also do in BASH shell.
+will work in a BASH shell.
 
 #Update to latest version:
 
@@ -40,7 +40,7 @@ git pull
 </pre>
 
 TODO: Check for updates at execute. Currently works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
-TODO: Graphical user interface. Launch logic works, no content in the GUI yet.
+TODO: Graphical user interface. Launch logic works, no real business in the GUI yet.
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
