@@ -2,7 +2,7 @@
 
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
-# Copyleft Juhana Kammonen 05/2018
+# Copyleft Juhana Kammonen 05/2018->
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -18,20 +18,21 @@ NC='\033[0m'
 spin[0]="-"
 spin[1]="${LG}\\"
 spin[2]="|"
-spin[3]="${LC}/${NC}"
+spin[3]=$'\u20bf'
+spin[4]="${LC}/${NC}"
 
 echo -n "Initializing...${spin[0]}"
-for i in `seq 0 4`;
+for i in `seq 0 5`;
 	do
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.069
+        		sleep 0.1
 		done
 	done
 }
 
-#Update check preparations:
+#Update check prep:
 git remote update > /dev/null
 STATUS=$(git status -s -u no | grep -A 1 "Your")
 
@@ -50,7 +51,6 @@ check_update() {
 
 }
 
-#Check available updates to start:
 check_update
 
 date=`date | sed 's/ /_/g'`
@@ -58,9 +58,7 @@ date=`date | sed 's/ /_/g'`
 wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/currencies/bitcoin
 #Check if coinmarketcap_data was compressed:
 FILEINFO=$(file "coinmarketcap_data_$date.html")
-#echo $FILEINFO
 if [[ $FILEINFO == *"gzip"* ]]; then
-  #uncompress and re-name:	
   mv coinmarketcap_data_"$date".html coinmarketcap_data_"$date".gz
   gunzip coinmarketcap_data_"$date".gz
   mv coinmarketcap_data_"$date" coinmarketcap_data_"$date".html
@@ -69,7 +67,6 @@ if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
-	# Master branch observation 24 Oct 2022: The cap and volume greps return two lines -> get only the first line with head:
 	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -81,11 +78,11 @@ then
 	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	echo
 	echo "----------"
-	echo "btctick.sh - Bitcoin market price ticker"
+	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-03-26 - USD ($)"
-	echo "btctick has NO WARRANTY. Use at your own discretion."
+	echo "You are at btctick.sh master branch edit 2024-04-05 - USD ($)"
+	echo "btctick has NO WARRANTY. Your discretion."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -93,7 +90,7 @@ then
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' it? Tip me at: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' it? Send "$'\u20bf'" to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
