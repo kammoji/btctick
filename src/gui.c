@@ -1,6 +1,6 @@
 
 //	File:	gui.c
-//	Author:	Juhana Kammonen 3 May 2023
+//	Author:	Juhana Kammonen 3 May 2024
 //	Purpose: source code for btctick GUI
 //	Use: 	Run main btctick script (btctick.sh) with the -g (--gui) option. This code is then compiled in runtime.
 //	Compile:	The code uses gtk. Must be specified explicitly to compiler,

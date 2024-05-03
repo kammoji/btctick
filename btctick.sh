@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-04-16 - USD ($)"
+	echo "You are at btctick.sh master branch edit 2024-05-03 - USD ($)"
 	echo "btctick has NO WARRANTY. Please use at your own discretion."
 	echo
 	date
@@ -90,7 +90,7 @@ then
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' this? Why not send some "$'\u20bf'" in support to: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' this? Show your love with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
@@ -103,8 +103,8 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history : Creates a hidden folder with historical data into your home at ~/.btctick_history'
-		echo '            A timestamp and BTC/USD price line will be appended into a file called price_history in the hidden folder.'
+		echo '--history : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
+		echo '            A timestamp and BTC/USD price line is appended into a file called price_history in the folder.'
 		echo
 		echo '-g | --gui : launches btctick in C gtk GUI mode'
 		echo
