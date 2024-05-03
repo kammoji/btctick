@@ -71,7 +71,7 @@ then
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 2 | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
-	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | cut -d"," -f 1 | cut -d":" -f 2`
+	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
 	price_parsed=`printf "%.0f" $price | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
