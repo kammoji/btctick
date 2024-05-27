@@ -81,8 +81,8 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-05-03 - USD ($)"
-	echo "btctick has NO WARRANTY. Please use at your own discretion."
+	echo "You are at btctick.sh master branch edit 2024-05-27 - USD ($)"
+	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -90,7 +90,7 @@ then
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' this? Show your love with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' this? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
