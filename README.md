@@ -23,7 +23,7 @@ Then run the shell script btctick.sh on your Linux shell, e.g:
 bash btctick.sh
 </pre>
 
-Script clones as runnable so simply
+The main script clones as runnable so simply
 
 <pre>
 chmod 775 btctick.sh
