@@ -27,7 +27,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.08
+        		sleep 0.085
 		done
 	done
 }
@@ -42,7 +42,7 @@ check_update() {
 
 	   then
 	    	echo
-        	echo "WARN: There is an update to btctick.sh available, the version you are running may not work correctly."
+        	echo "WARN: An update to btctick.sh available, the version you are running may not work correctly."
 		echo "INFO: Go to your install location where your 'btctick.sh' is located and type 'git pull' to update."
 		echo $STATUS
 		echo
@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-07-31 - USD ($)"
+	echo "You are at btctick.sh master branch edit 2024-08-08 - USD ($)"
 	echo "btctick has NO WARRANTY. All use at your own discretion."
 	echo
 	date
@@ -90,7 +90,7 @@ then
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' this? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' the work? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
