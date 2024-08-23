@@ -150,7 +150,7 @@ then
                 		echo For full help, run btctick.sh -h
                 		echo 'Contact juhana@konekettu.fi for further support'
                 		echo
-			      	exit 1
+			      	break
 
             		;;
         	esac
