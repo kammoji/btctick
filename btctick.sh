@@ -27,7 +27,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.076
+        		sleep 0.077
 		done
 	done
 }
@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-08-30 - USD ($)"
+	echo "You are at btctick.sh master branch edit 2024-09-06 - USD ($)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	date
@@ -90,7 +90,7 @@ then
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
 	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' the works? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' the work? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
@@ -103,10 +103,10 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
+		echo '--history : makes a (hidden) directory/folder with historical data into your $HOME at ~/.btctick_history'
 		echo '            A timestamp and BTC/USD price line is appended into a file called price_history in the folder.'
 		echo
-		echo '-g | --gui : launches btctick in C gtk GUI mode'
+		echo '-g | --gui : launches btctick in GUI mode'
 		echo
 		echo 'EXAMPLES:'
 		echo
@@ -131,11 +131,11 @@ then
                         		mkdir ~/.btctick_history
         		fi
         		echo $date $price_parsed >> ~/.btctick_history/price_history
-			echo 'INFO: Successfully appended current BTC/USD price to ~/.btctick_history/price_history'
+			echo 'INFO: Successfully saved current BTC/USD price to ~/.btctick_history/price_history'
             		shift # past argument
             		;;
             		-g|--gui)
-			echo 'INFO: GUI launch requested.'
+			echo 'INFO: GUI requested.'
 			echo 'INFO: Launching GUI...'
 			gcc -o ./gui src/gui.c `pkg-config --cflags --libs gtk4`
 			./gui
@@ -148,7 +148,7 @@ then
                 		echo ERROR: Unknown 'option(s)' passed, please check 'command' line
                 		echo Usage: btctick.sh '[--history, -g]'
                 		echo For full help, run btctick.sh -h
-                		echo 'Contact juhana@konekettu.fi for further support'
+                		echo 'Contact juhana@konekettu.fi for support'
                 		echo
 			      	break
 
