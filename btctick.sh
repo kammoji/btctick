@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-09-23 - USD ($)"
+	echo "You are at btctick.sh master branch edit 2024-10-21 - USD ($)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	date
