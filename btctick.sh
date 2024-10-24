@@ -27,7 +27,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.0786
+        		sleep 0.078
 		done
 	done
 }
