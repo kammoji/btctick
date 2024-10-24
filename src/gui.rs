@@ -7,7 +7,7 @@ use gtk::prelude::*;
 
 fn main() {
   // define the gtk application with a unique name and default parameters
-  let application = gtk::Application::new("The.name.goes.here", Default::default())
+  let application = gtk::Application::new("App.name.here", Default::default())
       .expect("Initialization failed");
 
   // this registers a closure (executing our setup_gui function) 
