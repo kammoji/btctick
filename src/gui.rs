@@ -1,9 +1,11 @@
 
-use std::thread::Builder;
 use glib::clone;
 // glib and other dependencies are re-exported by the gtk crate
 use gtk::glib;
 use gtk::prelude::*;
+
+extern crate glib;
+extern crate gtk;
 
 fn main() {
   // define the gtk application with a unique name and default parameters
@@ -22,10 +24,10 @@ fn main() {
 fn setup_gui(app: &Application){
   
   // we bake our glade file into the application code itself
-  let glade_src = include_str!("main.glade");
+  //let glade_src = include_str!("main.glade");
 
   // this builder provides access to all components of the defined ui
-  let builder = Builder::new_from_string(glade_src);
+  //let builder = Builder::new_from_string(glade_src);
 
   // glade allows us to get UI elements by id but we need to specify the type
   let window: Window = builder.get_object("wnd_main").expect("Couldn't get window");
