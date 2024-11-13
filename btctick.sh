@@ -81,8 +81,11 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-10-28 - USD ($)"
+	echo "You are at btctick.sh master branch edit 2024-11-13 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
+	echo
+	echo "NEWS 2024/11: In the wake of US presidential elections "$'\u20bf'" price has broken \$90k"
+	echo "and is on its way towards \$100k, #LaserRayTil100k!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed

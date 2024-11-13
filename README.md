@@ -1,5 +1,7 @@
 
-#Bitcoin market ticker - Copyleft - Juhana K 2018-2024
+#Bitcoin market price scraper - Copyleft - Juhana K 2018-2024
+
+#Bitcoin to the Moon 2025!!
 
 #Install:
 
