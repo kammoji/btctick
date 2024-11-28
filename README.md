@@ -1,11 +1,12 @@
 
 #Bitcoin market price scraper - Copyleft - Juhana K 2018-2024
 
-#Bitcoin to the Moon 2025!!
+#Bitcoin to the Moon and beyond 2025!!
 
 #Install:
 
-Install git, gzip and wget, needed to download the script logic, fetch and, if needed, unzip downloaded data:
+1. Install git, gzip and wget, needed to download the script logic.
+2. Fetch and, if needed, unzip downloaded data:
 
 <pre>
 sudo apt-get install git gzip wget
@@ -43,6 +44,8 @@ git pull
 
 TODO: Check for updates at execute. Currently works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
 TODO: Graphical user interface. Launch logic works, no real business in the GUI yet.
+TODO: Check if a Rust or Golang GUI would be possible and more easily implemented.
+TODO: Python?
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi

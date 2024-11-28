@@ -27,7 +27,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.0785
+        		sleep 0.079
 		done
 	done
 }
@@ -81,7 +81,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-11-13 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2024-11-28 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	echo "NEWS 2024/11: In the wake of US presidential elections "$'\u20bf'" price has broken \$90k"
@@ -92,8 +92,8 @@ then
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
-	echo "Data is from https://coinmarketcap.com"
-	echo "Diggin' it? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Data are from https://coinmarketcap.com"
+	echo "Diggin' this? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
