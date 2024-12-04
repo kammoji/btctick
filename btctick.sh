@@ -27,11 +27,13 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.079
+        		sleep 0.08
 		done
-	done
-}
 
+	done
+	sleep 1
+	tput cr; tput el
+}
 #Update check prep:
 git remote update > /dev/null
 STATUS=$(git status -s -u no | grep -A 1 "Your")
@@ -81,7 +83,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-11-28 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2024-12-04 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	echo "NEWS 2024/11: In the wake of US presidential elections "$'\u20bf'" price has broken \$90k"
