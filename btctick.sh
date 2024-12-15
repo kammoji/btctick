@@ -27,7 +27,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.08
+        		sleep 0.085
 		done
 
 	done
@@ -83,11 +83,11 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-12-04 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2024-12-15 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
-	echo "NEWS 2024/11: In the wake of US presidential elections "$'\u20bf'" price has broken \$90k"
-	echo "and is on its way towards \$100k, #LaserRayTil100k!"
+	echo "NEWS 2024/12: In the wake of US presidential elections "$'\u20bf'" price has now broken \$100k"
+	echo "and it is not looking back. All aboard the Bitcoin train while it's still on the station!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -108,14 +108,14 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history : makes a (hidden) directory/folder with historical data into your $HOME at ~/.btctick_history'
-		echo '            A timestamp and BTC/USD price line is appended into a file called price_history in the folder.'
+		echo '--history : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
+		echo '            A timestamp and BTC/USD price line is appended into a file "price_history" in the folder.'
 		echo
 		echo '-g | --gui : launches btctick in GUI mode'
 		echo
 		echo 'EXAMPLES:'
 		echo
-		echo './btctick.sh --history     : run btctick once, create and save the historical data'
+		echo './btctick.sh --history     : run btctick, create and save the historical data'
 		echo
 		echo './btctick.sh -g --history  : run btctick in GUI mode, save the historical data'
 		echo
