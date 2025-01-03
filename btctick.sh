@@ -3,6 +3,7 @@
 # Bitcoin ticker
 # Retrieves bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018->
+# that is to say, btctick is PUBLIC DOMAIN. Please copy, paste and spread the word!
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -27,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.085
+        		sleep 0.065
 		done
 
 	done
@@ -83,11 +84,11 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2024-12-15 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2025-01-03 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
-	echo "NEWS 2024/12: In the wake of US presidential elections "$'\u20bf'" price has now broken \$100k"
-	echo "and it is not looking back. All aboard the Bitcoin train while it's still on the station!"
+	echo "Happy New Year 2025!"
+	echo "In the wake of US presidential elections All aboard the "$'\u20bf'" train while it's still on the station!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
