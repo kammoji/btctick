@@ -84,18 +84,18 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-01-03 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2025-01-16 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	echo "Happy New Year 2025!"
-	echo "In the wake of US presidential elections All aboard the "$'\u20bf'" train while it's still on the station!"
+	echo "Bitcoin price is above \$100k, all aboard the "$'\u20bf'" train while it's still on the station!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
-	echo "Data are from https://coinmarketcap.com"
+	echo "Data source: https://coinmarketcap.com"
 	echo "Diggin' this? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
