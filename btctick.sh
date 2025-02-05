@@ -32,7 +32,7 @@ for i in `seq 0 5`;
 		done
 
 	done
-	sleep 1
+	sleep 0.5
 	tput cr; tput el
 }
 #Update check prep:
@@ -137,7 +137,7 @@ then
                         		mkdir ~/.btctick_history
         		fi
         		echo $date $price_parsed >> ~/.btctick_history/price_history
-			echo 'INFO: Successfully saved current BTC/USD price to ~/.btctick_history/price_history'
+			echo 'INFO: Success! Saved current BTC/USD price to ~/.btctick_history/price_history'
             		shift # past argument
             		;;
             		-g|--gui)

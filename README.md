@@ -35,7 +35,7 @@ chmod 775 btctick.sh
 
 will work in a BASH shell.
 
-#Update to latest version:
+#Manually update to latest:
 
 <pre>
 cd btctick
@@ -45,7 +45,6 @@ git pull
 TODO: Check for updates at execute. Currently works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
 TODO: Graphical user interface. Launch logic works, no real business in the GUI yet.
 TODO: Check if a Rust or Golang GUI would be possible and more easily implemented.
-TODO: Python?
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi

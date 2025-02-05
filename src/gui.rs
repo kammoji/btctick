@@ -1,6 +1,5 @@
 
 use glib::clone;
-// glib and other dependencies are re-exported by the gtk crate
 use gtk::glib;
 use gtk::prelude::*;
 
