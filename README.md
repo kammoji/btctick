@@ -1,7 +1,7 @@
 
 #Bitcoin market price scraper - Copyleft - Juhana K 2018-2025
 
-#Bitcoin to the Moon and beyond 2025!!
+#Beyond Bitcoin 2025!!
 
 #Install:
 
