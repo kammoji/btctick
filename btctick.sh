@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Bitcoin ticker
-# Retrieves bitcoin data from coinmarketcap.com website and outputs data
+# Gets bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018->
-# that is to say, btctick is PUBLIC DOMAIN. Please copy, paste and spread the word!
+# that is to say, btctick is PUBLIC DOMAIN. Please copy, paste and spread the work!
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.075
+        		sleep 0.079
 		done
 
 	done
@@ -95,8 +95,8 @@ then
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (last 24h): "\$$volume_parsed
 	echo
-	echo "Data source: https://coinmarketcap.com"
-	echo "Diggin' this? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Data from: https://coinmarketcap.com"
+	echo "Diggin' the work? Support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
