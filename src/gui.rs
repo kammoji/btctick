@@ -3,7 +3,7 @@ use glib::clone;
 use gtk::glib;
 use gtk::prelude::*;
 
-extern crate glib;
+//extern crate glib;
 extern crate gtk;
 
 fn main() {
