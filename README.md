@@ -20,7 +20,7 @@ git clone https://github.com/kammoji/btctick.git
 cd btctick
 </pre>
 
-Then run the shell script btctick.sh on your Linux shell, e.g:
+Then run the script btctick.sh on your Linux shell, e.g:
 
 <pre>
 bash btctick.sh
