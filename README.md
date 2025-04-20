@@ -1,5 +1,5 @@
 
-#Bitcoin market price scraper - Copyleft - Juhana K 2018-2025
+#Bitcoin market price command line tool - Copyleft - Juhana K 2018-2025
 
 #Beyond Bitcoin 2025!!
 
@@ -12,7 +12,7 @@
 sudo apt-get install git gzip wget
 </pre>
 
-Clone the repo to your location, e.g. to your home:
+Clone the repo to wherever, e.g. to home:
 
 <pre>
 cd
@@ -33,7 +33,7 @@ chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-will work in a BASH shell.
+should work in your shell.
 
 #Manually update to latest:
 
