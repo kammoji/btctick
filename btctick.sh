@@ -108,10 +108,12 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
-		echo '            A timestamp and BTC/USD price line is appended into a file "price_history" in the folder.'
+		echo '--history   : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
+		echo '              A timestamp and BTC/USD price line is appended into a file "price_history" in the folder.'
 		echo
-		echo '-g | --gui : launches btctick in GUI mode'
+		echo '-e | --euro : output with currency as EUR instead of USD' 
+		echo
+		echo '-g | --gui  : launches btctick in GUI mode'
 		echo
 		echo 'EXAMPLES:'
 		echo
@@ -147,6 +149,11 @@ then
 			rm -rf gui
             		shift # past argument
             		;;
+			-e|--euro)
+			echo 'INFO: Output currency EUR requested...'
+			echo 'INFO: Unfortunately, EUR mode still TODO.'
+			shift # past argument
+			;;
             		*)
                     		# unknown option
 				echo
