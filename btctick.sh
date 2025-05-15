@@ -73,7 +73,7 @@ then
 	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,40}' | head -n 10 | tail -n 5 | head -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
+	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 10 | tail -n 5 | head -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
 	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-05-11 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2025-05-15 - USD (\$)"
 	echo "btctick is public domain and has NO WARRANTY. All use at your own discretion."
 	echo
 	echo "Bitcoin price is hovering around \$100k, all aboard the "$'\u20bf'" train while it's still on the station!"
