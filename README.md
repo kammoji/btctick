@@ -1,9 +1,9 @@
 
-#Bitcoin market price command line tool - Copyleft - Juhana K 2018-2025
+# Bitcoin market price command line tool - Copyleft - Juhana K 2018-2025
 
-#Beyond Bitcoin 2025!!
+##Beyond Bitcoin 2025!!
 
-#Install:
+# Install:
 
 1. Install git, gzip and wget, needed to download the script logic.
 2. Fetch and, if needed, unzip downloaded data:
@@ -35,7 +35,7 @@ chmod 775 btctick.sh
 
 should work in your shell.
 
-#Manually update to latest:
+# Manually update to latest:
 
 <pre>
 cd btctick
