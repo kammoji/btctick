@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.079
+        		sleep 0.082
 		done
 
 	done
@@ -73,7 +73,7 @@ then
 	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 10 | tail -n 5 | head -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
+	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 7 | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
 	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-05-27 - USD (\$)"
+	echo "You are at btctick.sh master branch edit 2025-06-02 - USD (\$)"
 	echo "btctick is public domain with NO WARRANTY. All use at your own discretion."
 	echo
 	echo "NEWS: Bitcoin price broke \$100k. All aboard the "$'\u20bf'" train while it's still on the station!"
@@ -94,7 +94,7 @@ then
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (24h): "\$$volume_parsed
 	echo
-	echo "Data source: https://coinmarketcap.com"
+	echo "Data: https://coinmarketcap.com"
 	echo "Diggin' the works? Why not support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
@@ -160,7 +160,7 @@ then
                 		echo ERROR: Unknown 'option(s)' passed, please check 'command' line
                 		echo Usage: btctick.sh '[--history, -g]'
                 		echo For full help, run btctick.sh -h
-                		echo 'Contact juhana@konekettu.fi for support'
+                		echo 'Contact juhana|at|konekettu.fi for support'
                 		echo
 			      	break
 
@@ -170,7 +170,7 @@ then
 	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging
 	# Debugging is frequently needed due to coinmarketcap.com changing the site...: 
-	rm "coinmarketcap_data_$date.html"
+	rm -rf "coinmarketcap_data_$date.html"
 else
 	echo
 	echo "ERROR: no data link to https://coinmarketcap.com"
