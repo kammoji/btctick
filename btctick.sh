@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-06-05 - USD (\$)"
-	echo "btctick is public domain with NO WARRANTY. All use at your own discretion."
+	echo "You are at btctick.sh master branch edit 2025-06-19 - USD (\$)"
+	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Bitcoin market price broke \$100k again. All aboard the "$'\u20bf'" train while it's still on the station!"
+	echo "NEWS: Bitcoin market price around \$100k again. All aboard the "$'\u20bf'" train while it's still on the station!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -158,8 +158,8 @@ then
                     		# unknown option
 				echo
                 		echo ERROR: Unknown 'option(s)' passed, please check 'command' line
-                		echo Usage: btctick.sh '[--history, -g]'
-                		echo For full help, run btctick.sh -h
+                		echo Usage: btctick.sh '[--history, -g, -e]'
+                		echo Full help: btctick.sh -h
                 		echo 'Contact juhana|at|konekettu.fi for support'
                 		echo
 			      	break
