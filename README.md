@@ -1,7 +1,7 @@
 
 # Bitcoin market price command line tool - Copyleft - Juhana K 2018-2025
 
-##Beyond Bitcoin 2025!!
+##Beyond Bitcoin 2025!
 
 # Install:
 
@@ -12,7 +12,7 @@
 sudo apt-get install git gzip wget
 </pre>
 
-Clone the repo to wherever, e.g. to your home:
+Clone the repo to e.g. to your home:
 
 <pre>
 cd
@@ -33,7 +33,7 @@ chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-should work in your shell.
+should work in a shell.
 
 # Manually update to latest:
 
