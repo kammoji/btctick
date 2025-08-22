@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.088
+        		sleep 0.078
 		done
 
 	done
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-08-20 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-08-22 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Bitcoin market price topping \$100k again. All aboard the "$'\u20bf'" train while it's still on the station!"
@@ -160,7 +160,7 @@ then
                 		echo ERROR: Unknown 'option(s)' passed, please check 'command' line
                 		echo Usage: btctick.sh '[--history, -g, -e]'
                 		echo Full help: btctick.sh -h
-                		echo 'Contact juhana|at|konekettu.fi for support'
+                		echo 'Contact juhana[a]konekettu.fi for support'
                 		echo
 			      	break
 
