@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-08-22 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-08-24 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Bitcoin market price topping \$100k again. All aboard the "$'\u20bf'" train while it's still on the station!"
@@ -108,7 +108,7 @@ then
 		echo
         	echo 'OPTIONS:'
 		echo
-		echo '--history   : makes a hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
+		echo '--history   : makes a semi-hidden directory/folder with historical data into your $HOME at ~/.btctick_history'
 		echo '              A timestamp and BTC/USD price line is appended into a file "price_history" in the folder.'
 		echo
 		echo '-e | --euro : output with currency as EUR instead of USD' 

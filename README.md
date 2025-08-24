@@ -20,13 +20,13 @@ git clone https://github.com/kammoji/btctick.git
 cd btctick
 </pre>
 
-Then run btctick.sh on your Linux shell, e.g:
+Then run on your Linux shell, e.g:
 
 <pre>
 bash btctick.sh
 </pre>
 
-The main script clones as runnable so simply
+The script clones as runnable so simply
 
 <pre>
 chmod 775 btctick.sh
