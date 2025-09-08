@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.078
+        		sleep 0.079
 		done
 
 	done
@@ -46,7 +46,7 @@ check_update() {
 	   then
 	    	echo
         	echo "WARN: An update to btctick is available, the version you are running may not work correctly."
-		echo "INFO: Simply run 'git pull' in your install location to update."
+		echo "INFO: Run 'git pull' in your install location to update."
 		echo $STATUS
 		echo
 
@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-08-24 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-09-08 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Bitcoin market price topping \$100k again. All aboard the "$'\u20bf'" train while it's still on the station!"
+	echo "NEWS: Bitcoin market price is over \$100k again. All aboard the "$'\u20bf'" train while still on the station!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
