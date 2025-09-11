@@ -3,7 +3,7 @@
 # Bitcoin ticker
 # Gets bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018->
-# that is to say, btctick is PUBLIC DOMAIN. Please copy, paste and spread the work!
+# btctick is PUBLIC DOMAIN. Please copy, paste, spread the work!
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.079
+        		sleep 0.0795
 		done
 
 	done
@@ -46,7 +46,7 @@ check_update() {
 	   then
 	    	echo
         	echo "WARN: An update to btctick is available, the version you are running may not work correctly."
-		echo "INFO: Run 'git pull' in your install location to update."
+		echo "INFO: Run 'git pull' to update."
 		echo $STATUS
 		echo
 
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-09-08 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-09-11 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Bitcoin market price is over \$100k again. All aboard the "$'\u20bf'" train while still on the station!"
