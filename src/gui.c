@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
   GtkApplication *gui;
   int status;
 
-  gui = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE); 
+  gui = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS); 
   g_signal_connect (gui, "activate", G_CALLBACK (activate), argv[1]);
   status = g_application_run (G_APPLICATION (gui), argc, argv);
   g_object_unref (gui);
