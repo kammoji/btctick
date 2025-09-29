@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-09-22 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-09-29 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Bitcoin market price is over \$100k again. All aboard the "$'\u20bf'" train while still on the station!"
@@ -169,7 +169,7 @@ then
         	done
 	fi
 	#CLEANUP, comment away with "#" the following line to enable debugging
-	# Debugging is frequently needed due to coinmarketcap.com changing the site...: 
+	# Debugging the data inflow is frequently needed due to coinmarketcap.com site edits...: 
 	rm -rf "coinmarketcap_data_$date.html"
 else
 	echo
