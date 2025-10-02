@@ -1,6 +1,6 @@
 
 //	File:	gui.c
-//	Author:	Juhana Kammonen 3 May 2024
+//	Author:	Juhana Kammonen 2 Oct 2025
 //	Purpose: source code for btctick GUI
 //	Use: 	Run main btctick script (btctick.sh) with the -g (--gui) option. This code is then compiled in runtime.
 //	Compile:	The code uses gtk. Must be specified explicitly to compiler,
@@ -16,7 +16,7 @@ static void activate (GtkApplication* gui, gpointer user_data)
   gtk_window_set_title (GTK_WINDOW (window), "btctick");
   gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
 
-  price = gtk_label_new ("Sorry, only this here but price chart GUI someday!");
+  price = gtk_label_new ("Sorry, only empty here but price chart GUI someday!");
   button = gtk_button_new_with_label("Click to close");
   //button close logic:
   //g_signal_connect(G_OBJECT(button),
