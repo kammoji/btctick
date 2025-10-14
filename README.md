@@ -47,7 +47,7 @@ cd btctick
 git pull
 </pre>
 
-TODO: Check for updates at execute. Currently works in the sense that git stuff runs on display if update available. Update is checked in the init spinner.
+TODO: Check for updates at exec. Currently works so that git stuff runs on display if update available. Update is checked in the init spinner.
 TODO: GUI. Launch logic works, no real business in the GUI yet.
 TODO: Check if a Rust GUI would be possible and more easily implemented.
 TODO: Support for other currencies. Euro is in the prealpha phase now...
