@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.0778
+        		sleep 0.078
 		done
 
 	done
@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-10-14 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-10-16 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Look at that \$USD price over \$110k again! All aboard the "$'\u20bf'" train while still on the station!"
+	echo "NEWS: Look at that \$USD price at \$110k again, a buying opportunity! All aboard the "$'\u20bf'" train!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -173,7 +173,7 @@ then
 	rm -rf "coinmarketcap_data_$date.html"
 else
 	echo
-	echo "ERROR: no data link to https://coinmarketcap.com"
+	echo "ERROR: no data link to coinmarketcap.com"
 	echo "Please check your internet connection."
 	echo
 fi
