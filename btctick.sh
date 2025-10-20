@@ -3,7 +3,7 @@
 # Bitcoin ticker
 # Gets bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018->
-# btctick is PUBLIC DOMAIN. Please copy, paste, spread the work!
+# btctick is and always will be PUBLIC DOMAIN. Please copy, paste, spread the work!
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.078
+        		sleep 0.079
 		done
 
 	done
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-10-16 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-10-20 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Look at that \$USD price at \$110k again, a buying opportunity! All aboard the "$'\u20bf'" train!"
@@ -95,7 +95,7 @@ then
 	echo "Trading volume (24h): "\$$volume_parsed
 	echo
 	echo "Data: https://coinmarketcap.com"
-	echo "Diggin' the works? Why not support with "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
+	echo "Diggin' the works? Why not support with some "$'\u20bf'" to address: 34iMNyQ4ntVQSPeMLtyM7j1Az1eqWagQwK"
 	echo
 
 	#Command line option parser:
