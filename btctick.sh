@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-10-20 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-11-20 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Look at that \$USD price at \$110k again, a buying opportunity! All aboard the "$'\u20bf'" train!"
+	echo "NEWS: Look at that price at \$91k allover again, a buing opportunity! All aboard the "$'\u20bf'" train."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
