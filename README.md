@@ -1,5 +1,5 @@
 
-## Bitcoin market price command line tool - Copyleft - Juhana K 2018-2025
+## Bitcoin market price command line tool - Copyleft - Juhana K 2018-2026
 
 ### Beyond Bitcoin 2026!
 
