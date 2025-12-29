@@ -33,7 +33,7 @@ chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-should work in a shell.
+should work.
 
 ## Print the manual
 <pre>
@@ -50,7 +50,7 @@ git pull
 TODO: Check for updates at exec. Currently works so that git stuff runs on display if update available. Update is checked in the init spinner.
 TODO: GUI. Launch logic works, no real business in the GUI yet.
 TODO: Check if a Rust GUI would be possible and more easily implemented.
-TODO: Support for other currencies. Euro is in the prealpha phase now...
+TODO: Support for other currencies. EUR is in the prealpha phase now...
 
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi

@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.081
+        		sleep 0.082
 		done
 
 	done
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-12-27 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2025-12-29 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: "$'\u20bf'" price is now at \$87k, a buing opportunity, BTFD I'd say =D !"
