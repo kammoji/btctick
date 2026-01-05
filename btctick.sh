@@ -73,7 +73,7 @@ then
 	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 7  | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
+	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 9  | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
 	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick.sh master branch edit 2025-12-29 - default FIAT is USD (\$)."
+	echo "You are at btctick.sh master branch edit 2026-01-05 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: "$'\u20bf'" price is now at \$87k, a buing opportunity, BTFD I'd say =D !"
+	echo "NEWS: Happy "$'\u20bf'" year 2026!"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
