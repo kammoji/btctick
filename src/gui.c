@@ -14,7 +14,7 @@ static void activate (GtkApplication* gui, gpointer user_data)
 
   window = gtk_application_window_new (gui);
   gtk_window_set_title (GTK_WINDOW (window), "btctick");
-  gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+  gtk_window_set_default_size (GTK_WINDOW (window), 500, 500);
 
   price = gtk_label_new ("Happy Bitcoin year 2026!");
   button = gtk_button_new_with_label("Click to close");
@@ -23,8 +23,7 @@ static void activate (GtkApplication* gui, gpointer user_data)
   //                   "clicked", G_CALLBACK(greet),
   //                   "button");
   gtk_window_set_child (GTK_WINDOW (window), price);
-  gtk_window_present (GTK_WINDOW (window));
-  gtk_window_set_child (GTK_WINDOW (window), button);
+  //gtk_window_set_child (GTK_WINDOW (window), button);
   gtk_window_present (GTK_WINDOW (window));
 }
 
