@@ -40,6 +40,11 @@ should work.
 ./btctick.sh -h
 </pre>
 
+## GUI mode (prealpha):
+<pre>
+./btctick.sh --gui
+</pre>
+
 ## Manually update to latest:
 
 <pre>
