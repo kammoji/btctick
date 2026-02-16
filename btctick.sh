@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.088
+        		sleep 0.085
 		done
 
 	done
@@ -70,10 +70,10 @@ if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
-	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 2 | tail -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
+	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
 	#echo $cap
 	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 9  | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
+	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 6  | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
 	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
 	#Enter parser:
 	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-01-13 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-02-16 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Happy "$'\u20bf'" year 2026!"
