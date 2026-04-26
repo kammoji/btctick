@@ -1,7 +1,7 @@
 
-## Bitcoin market price command line tool - Copyleft - Juhana K 2018-2026
+## Bitcoin market price command line tool for Linux terminals - Copyleft - Juhana K 2018-2026
 
-### Happy Bitcoin bear year 2026!
+### Happy Bitcoin year 2026!
 
 ## Install:
 
