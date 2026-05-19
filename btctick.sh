@@ -84,18 +84,18 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-05-14 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-05-19 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Happy Summer Day 2026! Prepare for the next bull run in ca. 3 years, it will be sooner than you think!"
+	echo "NEWS: Celebrating Summer 2026! Prepare for the next bull run in ca. 3 years, it will be sooner than you think! Why not start stacking your sats, visit https://konekettu.fi for opportunities"
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
 	echo "Avg. price across exchanges: "\$$price_parsed
 	echo "Trading volume (24h): "\$$volume_parsed
 	echo
-	echo "Data: https://coinmarketcap.com"
-	echo "Diggin' it? Why not support us with some "$'\u20bf'" to address: 1GsBi4t7XyDRoBR2kegDUdNa3CHMVRto6q"
+	echo "Source: https://coinmarketcap.com"
+	echo "Diggin' it? Support us with some "$'\u20bf'" to address: 1GsBi4t7XyDRoBR2kegDUdNa3CHMVRto6q"
 	echo
 
 	#Command line option parser:
