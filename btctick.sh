@@ -28,11 +28,11 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.0788
+        		sleep 0.08
 		done
 
 	done
-	sleep 0.5
+	sleep 0.4
 	tput cr; tput el
 }
 #Update check prep:
@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-05-20 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-05-25 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Celebrating Summer 2026! Prepare for the next bull run in ca. 3 years! Why not start stacking your sats, visit https://konekettu.fi for opportunities"
+	echo "NEWS: Celebrating Summer 2026! Prepare for the next bull run in ca. 3 years! Why not start stacking your sats, visit https://konekettu.fi for opportunities."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
