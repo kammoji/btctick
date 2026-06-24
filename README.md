@@ -1,7 +1,7 @@
 
 ## Bitcoin market price command line tool for Linux terminals - Copyleft - Juhana K 2018-2026
 
-### Happy Bitcoin year 2026!
+### Happy Bitcoin bear year 2026!
 
 ## Install:
 
@@ -35,7 +35,7 @@ chmod 775 btctick.sh
 
 should work.
 
-## Print the manual
+## Usage:
 <pre>
 ./btctick.sh -h
 </pre>
