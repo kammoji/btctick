@@ -45,7 +45,7 @@ check_update() {
 
 	   then
 	    	echo
-        	echo "WARN: Update to btctick available, the version you are running may not work correctly."
+        	echo "WARN: Update available, the version you are running may not work correctly."
 		echo "INFO: Run 'git pull' to update."
 		echo $STATUS
 		echo
@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-08-06 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-08-11 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Happy BTC Bear Summer and August 2026! Prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."
+	echo "NEWS: Happy BTC Bear Year 2026! Prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
@@ -168,8 +168,9 @@ then
         	esac
         	done
 	fi
-	#CLEANUP, comment away with "#" the following line to enable debugging
-	# Debugging the data inflow is frequently needed due to coinmarketcap.com site edits...: 
+	#CLEANUP for devs
+	#Comment away with "#" the following line to enable debugging
+	#Frequently needed due to coinmarketcap.com site edits...: 
 	rm -rf "coinmarketcap_data_$date.html"
 else
 	echo
