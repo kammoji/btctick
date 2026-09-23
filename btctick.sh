@@ -84,10 +84,10 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-09-15 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-09-23 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Happy Bear Year 2026! Prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."
+	echo "NEWS: Whoa, BTC at near \$90k in 2026! Beware for bears and prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."
 	echo
 	date
 	echo "Bitcoin market cap: "\$$cap_parsed
