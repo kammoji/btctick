@@ -28,7 +28,7 @@ for i in `seq 0 5`;
   		for j in "${spin[@]}"
   			do
         		echo -ne "\b$j"
-        		sleep 0.085
+        		sleep 0.086
 		done
 
 	done
@@ -84,7 +84,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-09-29 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-10-07 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: Whoa, BTC at over \$80k in 2026! Beware for bears and prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."

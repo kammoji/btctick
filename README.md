@@ -26,7 +26,7 @@ Then run on your Linux shell, e.g:
 bash btctick.sh
 </pre>
 
-The script clones as runnable so simply
+The script has runnable config so simply
 
 <pre>
 chmod 775 btctick.sh
