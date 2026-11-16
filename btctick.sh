@@ -56,6 +56,12 @@ check_update() {
 
 check_update
 
+# Early scan for currency option, needed before output is printed:
+euro=0
+for arg in "$@"; do
+	case $arg in -e|--euro) euro=1 ;; esac
+done
+
 date=`date | sed 's/ /_/g'`
 
 wget -q --output-document coinmarketcap_data_"$date".html coinmarketcap.com/currencies/bitcoin
@@ -70,29 +76,57 @@ if [ -s "coinmarketcap_data_$date.html" ] && [ ! -z "$FILEINFO" ]
 then
 	spinner
 	#grep -A 20 "href=\"/currencies/bitcoin/\">Bitcoin</a>" coinmarketcap_data_$date\.html > coinmarketcap_data_$date
-	cap=`cat coinmarketcap_data_$date\.html | grep -o -P 'Cap":.{0,500}' | head -n 30 | tail -n 1 | cut -d":" -f 2 | cut -d"," -f 1`
-	#echo $cap
-	#cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price=`cat coinmarketcap_data_$date\.html | grep -o -P 'price".{0,500}' | head -n 28 | tail -n 1 | cut -d":" -f 2 | cut -d"." -f 1`
-	volume=`cat coinmarketcap_data_$date\.html | grep -o -P 'volume".{0,40}' | head -n 15 | tail -n 1 | cut -d"," -f 1 | cut -d":" -f 2`
+	# Bitcoin's own figures live in the page's "statistics":{...} JSON block.
+	# Extract by key name instead of counting matches, which broke on every site edit.
+	stats=`grep -o -P '"statistics":\{[^}]*\}' coinmarketcap_data_$date\.html | head -n 1`
+	get_stat() { echo "$stats" | grep -o -P "\"$1\":[0-9.eE+-]+" | head -n 1 | cut -d":" -f 2; }
+	cap=`get_stat marketCap`
+	price=`get_stat price`
+	volume=`get_stat volume24h`
+	if [ -z "$cap" ] || [ -z "$price" ] || [ -z "$volume" ]; then
+		echo "ERROR: could not parse Bitcoin data from coinmarketcap.com (site layout changed?)"
+		echo "Debug copy kept at: $SCRIPTPATH/coinmarketcap_data_$date.html"
+		exit 1
+	fi
 	#Enter parser:
-	cap_parsed=`printf "%.0f" $cap | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	price_parsed=`printf "%.0f" $price | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
-	volume_parsed=`printf "%.0f" $volume | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`
+	fmt() { printf "%.0f" "$1" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'; }
+	usd_price_parsed=`fmt $price`   # history file always stores BTC/USD
+	fiat="USD"; sym="\$"
+	if [ "$euro" = 1 ]; then
+		# The page lists fiat rates as USD per unit, e.g. "symbol":"EUR","p":1.10
+		eurusd=`grep -o -P '"symbol":"EUR","p":[0-9.]+' coinmarketcap_data_$date\.html | head -n 1 | cut -d":" -f 3`
+		if [ -n "$eurusd" ]; then
+			fiat="EUR"; sym=$'€'
+			price=`awk -v v="$price" -v r="$eurusd" 'BEGIN{printf "%.2f", v/r}'`
+			cap=`awk -v v="$cap" -v r="$eurusd" 'BEGIN{printf "%.2f", v/r}'`
+			volume=`awk -v v="$volume" -v r="$eurusd" 'BEGIN{printf "%.2f", v/r}'`
+		else
+			echo "WARN: EUR exchange rate not found on coinmarketcap.com, showing USD instead."
+		fi
+	fi
+	cap_parsed=`fmt $cap`
+	price_parsed=`fmt $price`
+	volume_parsed=`fmt $volume`
 	echo
 	echo "----------"
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-10-07 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-11-16 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: Whoa, BTC at over \$80k in 2026! Beware for bears and prepare for the next bull run in ca. 3 years! A bear market is a great chance to start stacking Sats, visit https://konekettu.fi for opportunities."
+	echo "NEWS: btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
+	echo "      BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
+	echo "      In the next four years, we may see it crash all the way to \$200K :D !"
+	echo "      Dips are a great chance to stack Sats, visit https://konekettu.fi for opportunities."
 	echo
 	date
-	echo "Bitcoin market cap: "\$$cap_parsed
-	echo "Avg. price across exchanges: "\$$price_parsed
-	echo "Trading volume (24h): "\$$volume_parsed
+	echo "Bitcoin market cap: $sym$cap_parsed"
+	echo "Avg. price across exchanges: $sym$price_parsed"
+	echo "Trading volume (24h): $sym$volume_parsed"
+	if [ "$fiat" = "EUR" ]; then
+		echo "(Converted from USD at 1 EUR = `printf "%.4f" $eurusd` USD)"
+	fi
 	echo
 	echo "Source: https://coinmarketcap.com"
 	echo "Diggin' it? Support us with some "$'\u20bf'" to address: 1GsBi4t7XyDRoBR2kegDUdNa3CHMVRto6q"
@@ -135,10 +169,13 @@ then
         		if [[ ! -d ~/.btctick_history ]]
                 		then
 					echo 'Creating new folder ~/.btctick_history ...'
-                        		mkdir ~/.btctick_history
+                        		mkdir -p ~/.btctick_history
         		fi
-        		echo $date $price_parsed >> ~/.btctick_history/price_history
-			echo 'INFO: Success! Saved current BTC/USD price to ~/.btctick_history/price_history'
+        		if echo $date $usd_price_parsed >> ~/.btctick_history/price_history; then
+				echo 'INFO: Success! Saved current BTC/USD price to ~/.btctick_history/price_history'
+			else
+				echo 'ERROR: Could not write to ~/.btctick_history/price_history'
+			fi
             		shift # past argument
             		;;
             		-g|--gui)
@@ -150,8 +187,7 @@ then
             		shift # past argument
             		;;
 			-e|--euro)
-			echo 'INFO: Output currency EUR requested...'
-			echo 'INFO: Unfortunately, EUR mode still TODO.'
+			# Already applied above (see early -e/--euro scan)
 			shift # past argument
 			;;
             		*)
