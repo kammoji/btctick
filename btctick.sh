@@ -12,22 +12,21 @@ cd $SCRIPTPATH
 
 #Spinning icon stuff:
 spinner() {
-LG='\033[1;32m'
-LC='\033[1;36m'
 NC='\033[0m'
+# Rainbow cycle: red, yellow, green, cyan, blue, magenta (bold/bright).
+# 6 colors vs 5 frames, so the colors drift across the symbols each round.
+colors=('\033[1;31m' '\033[1;33m' '\033[1;32m' '\033[1;36m' '\033[1;34m' '\033[1;35m')
 
-spin[0]="-"
-spin[1]="${LG}\\"
-spin[2]="|"
-spin[3]=$'\u20bf'
-spin[4]="${LC}/${NC}"
+spin=("-" "\\" "|" $'\u20bf' "/")
 
-echo -n "Initializing...${spin[0]}"
+echo -n "Initializing... "
+k=0
 for i in `seq 0 5`;
 	do
   		for j in "${spin[@]}"
   			do
-        		echo -ne "\b$j"
+        		printf "\b${colors[k % ${#colors[@]}]}%s${NC}" "$j"
+        		k=$((k + 1))
         		sleep 0.086
 		done
 
@@ -112,7 +111,7 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-11-16 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit 2026-11-17 - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
 	echo "NEWS: btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
