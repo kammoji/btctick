@@ -65,5 +65,10 @@ cd btctick
 git pull
 </pre>
 
+## TODO:
+
+TODO: macOS support. The GUI launcher already detects macOS, but the main script's parsing uses
+<code>grep -P</code> and other GNU-only options that macOS's built-in tools don't support.
+
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
