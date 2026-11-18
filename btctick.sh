@@ -10,6 +10,16 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 
+# Date of the latest edit + today's news (one line per entry). Both are shown
+# in the terminal and in the GUI window. Update these together on each edit.
+EDIT_DATE=2026-11-18
+NEWS=(
+"btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
+"BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
+"In the next four years, we may see it crash all the way to \$200K :D !"
+"Dips are a great chance to stack Sats, visit https://konekettu.fi for opportunities."
+)
+
 #Spinning icon stuff:
 spinner() {
 NC='\033[0m'
@@ -34,23 +44,23 @@ for i in `seq 0 5`;
 	sleep 0.4
 	tput cr; tput el
 }
-#Update check prep:
-git remote update > /dev/null
-STATUS=$(git status -s -u no | grep -A 1 "Your")
-
+# Update check: compares this copy with the latest version on GitHub.
+# Stays silent when offline, or when btctick wasn't installed with git clone.
+update_behind=0
 check_update() {
-
-    if [ ! -z "$STATUS" ]
-
-	   then
-	    	echo
-        	echo "WARN: Update available, the version you are running may not work correctly."
-		echo "INFO: Run 'git pull' to auto-update to latest."
-		echo $STATUS
-		echo
-
-    fi
-
+	git rev-parse --abbrev-ref '@{u}' >/dev/null 2>&1 || return 0   # no git clone / no upstream
+	# No password prompts; give up if the connection stalls for 5 s:
+	GIT_TERMINAL_PROMPT=0 git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=5 \
+		fetch -q 2>/dev/null || return 0
+	update_behind=$(git rev-list --count 'HEAD..@{u}' 2>/dev/null || echo 0)
+	update_latest=$(git log -1 --format='%s (%cs)' '@{u}' 2>/dev/null)
+}
+show_update() {
+	[ "${update_behind:-0}" -gt 0 ] || return 0
+	echo "WARN: Update available! You are $update_behind version(s) behind, so btctick may not work correctly."
+	echo "      Latest: $update_latest"
+	echo "INFO: To update, run:  cd $SCRIPTPATH && git pull"
+	echo
 }
 
 check_update
@@ -82,6 +92,9 @@ then
 	cap=`get_stat marketCap`
 	price=`get_stat price`
 	volume=`get_stat volume24h`
+	ch24=`get_stat priceChangePercentage24h`
+	ch7=`get_stat priceChangePercentage7d`
+	snapshot=`date '+%Y-%m-%d %H:%M'`
 	if [ -z "$cap" ] || [ -z "$price" ] || [ -z "$volume" ]; then
 		echo "ERROR: could not parse Bitcoin data from coinmarketcap.com (site layout changed?)"
 		echo "Debug copy kept at: $SCRIPTPATH/coinmarketcap_data_$date.html"
@@ -111,13 +124,14 @@ then
 	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
 	echo "----------"
 	echo
-	echo "You are at btctick master branch edit 2026-11-17 - default FIAT is USD (\$)."
+	echo "You are at btctick master branch edit $EDIT_DATE - default FIAT is USD (\$)."
 	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
 	echo
-	echo "NEWS: btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
-	echo "      BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
-	echo "      In the next four years, we may see it crash all the way to \$200K :D !"
-	echo "      Dips are a great chance to stack Sats, visit https://konekettu.fi for opportunities."
+	prefix="NEWS: "
+	for line in "${NEWS[@]}"; do
+		echo "$prefix$line"
+		prefix="      "
+	done
 	echo
 	date
 	echo "Bitcoin market cap: $sym$cap_parsed"
@@ -130,6 +144,7 @@ then
 	echo "Source: https://coinmarketcap.com"
 	echo "Diggin' it? Support us with some "$'\u20bf'" to address: 1GsBi4t7XyDRoBR2kegDUdNa3CHMVRto6q"
 	echo
+	show_update
 
 	#Command line option parser:
 	if [ -z $1 ]
@@ -146,7 +161,7 @@ then
 		echo
 		echo '-e | --euro : output with currency as EUR instead of USD' 
 		echo
-		echo '-g | --gui  : launches btctick in GUI mode'
+		echo '-g | --gui  : also shows the figures in a small browser window (Linux/macOS)'
 		echo
 		echo 'EXAMPLES:'
 		echo
@@ -179,10 +194,12 @@ then
             		;;
             		-g|--gui)
 			echo 'INFO: GUI requested.'
-			echo 'INFO: GUI launching...'
-			gcc -o ./gui src/gui.c `pkg-config --cflags --libs gtk4`
-			./gui
-			rm -rf gui
+			# GUI code lives in src/gui.sh, loaded only when needed:
+			if [ -f "$SCRIPTPATH/src/gui.sh" ]; then
+				source "$SCRIPTPATH/src/gui.sh" && launch_gui
+			else
+				echo "ERROR: GUI file src/gui.sh is missing. Run git pull to restore it."
+			fi
             		shift # past argument
             		;;
 			-e|--euro)
@@ -212,4 +229,5 @@ else
 	echo "ERROR: no data link to coinmarketcap.com"
 	echo "Please check your internet connection."
 	echo
+	show_update
 fi

@@ -1,18 +1,24 @@
+<p align="center"><img src="docs/logo.png" width="96" height="96" alt="btctick logo"></p>
 
-## Bitcoin market price command line tool for Linux terminals - Copyleft - Juhana K 2018-2026
+<h1 align="center">btctick</h1>
+
+<p align="center"><b>Bitcoin market price ticker for Linux terminals</b><br>
+Copyleft - Juhana K 2018-2026 · Public domain</p>
 
 ### Happy Bitcoin bear year 2026!
 
+btctick shows the current Bitcoin price, market cap and 24h trading volume
+straight from coinmarketcap.com, in USD or EUR, in your terminal or in a small window.
+
 ## Install:
 
-1. Install git, gzip and wget, needed to download the script logic.
-2. Fetch and, if needed, unzip downloaded data:
+btctick needs git, gzip and wget:
 
 <pre>
 sudo apt-get install git gzip wget
 </pre>
 
-Clone the repo to e.g. to your home:
+Clone the repo to e.g. your home:
 
 <pre>
 cd
@@ -20,43 +26,44 @@ git clone https://github.com/kammoji/btctick.git
 cd btctick
 </pre>
 
-Then run on your Linux shell, e.g:
+Then run on your Linux shell:
 
 <pre>
-bash btctick.sh
-</pre>
-
-The script has runnable config so simply
-
-<pre>
-chmod 775 btctick.sh
 ./btctick.sh
 </pre>
 
-should work.
+(or <code>bash btctick.sh</code> if the script isn't executable on your system).
 
 ## Usage:
+
 <pre>
-./btctick.sh -h
+./btctick.sh              # price in USD
+./btctick.sh -e           # price in EUR
+./btctick.sh --history    # also save the BTC/USD price to ~/.btctick_history/price_history
+./btctick.sh -h           # all options
 </pre>
 
-## GUI mode (prealpha):
+## GUI mode:
+
 <pre>
 ./btctick.sh --gui
 </pre>
 
-## Manually update to latest:
+<p align="center"><img src="docs/gui.png" width="440" alt="btctick GUI window showing the Bitcoin price, 24h and 7d change, market cap, volume and news"></p>
+
+Shows the price in a small window, no extra installs needed, just a web browser.
+With Chrome, Edge, Brave, Vivaldi or Chromium installed you get a compact app-style window;
+otherwise the page opens in your default browser. Combine with -e for EUR.
+
+## Updates:
+
+btctick checks for updates every time it runs and tells you if a newer version is available.
+To update:
 
 <pre>
 cd btctick
 git pull
 </pre>
 
-TODO: Check for updates at exec. Currently works so that git stuff runs on display if update available. Update is checked in the init spinner.
-TODO: GUI. Launch logic works, no real business in the GUI yet.
-TODO: Check if a Rust GUI would be possible and more easily implemented.
-TODO: Support for other currencies. EUR is in the prealpha phase now...
-
 Suggestions, questions, anything?
 Contact juhana[a]konekettu.fi
-
