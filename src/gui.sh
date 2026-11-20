@@ -78,6 +78,14 @@ EOF
 # toolbar-free "app" window. Prints its path, or fails if none found.
 find_app_browser() {
 	case "$OS" in
+	WSL)
+		# Windows-side browsers (Edge ships with every Windows):
+		for exe in "/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \
+			"/mnt/c/Program Files/Microsoft/Edge/Application/msedge.exe" \
+			"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" \
+			"/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"; do
+			[ -x "$exe" ] && { echo "$exe"; return 0; }
+		done ;;
 	Linux)
 		for b in google-chrome google-chrome-stable microsoft-edge brave-browser \
 			vivaldi chromium chromium-browser; do
@@ -93,8 +101,47 @@ find_app_browser() {
 	return 1
 }
 
+# Starts a program in the background, then checks it didn't fail right away.
+# A browser that can't start usually exits within a second with an error;
+# one that stays running, or hands over to an already-open browser (exit 0), is fine.
+start_bg() {
+	local log="$cache/launch.log" pid rc i
+	nohup "$@" >"$log" 2>&1 &
+	pid=$!
+	for i in 1 2 3; do
+		sleep 0.5
+		kill -0 $pid 2>/dev/null || break
+	done
+	kill -0 $pid 2>/dev/null && return 0
+	wait $pid; rc=$?
+	[ $rc -eq 0 ] && return 0
+	echo "WARN: $(basename "$1") failed to start (exit code $rc)."
+	[ -s "$log" ] && tail -n 2 "$log" | cut -c1-150 | sed 's/^/      /'
+	return 1
+}
+
+# Opens the page in the system's default browser.
+open_default() {
+	case "$OS" in
+	Darwin) start_bg open "$page" ;;
+	WSL)
+		# wslview (from wslu) if present, else Windows' own "start" command.
+		# cmd.exe is run from C:\ to avoid its warning about Linux folders.
+		if command -v wslview >/dev/null 2>&1; then
+			start_bg wslview "$page"
+		else
+			(cd /mnt/c 2>/dev/null || cd /; start_bg cmd.exe /c start "" "$(wslpath -w "$page" 2>/dev/null)")
+		fi ;;
+	*) start_bg xdg-open "$page" ;;
+	esac
+}
+
 launch_gui() {
 	OS=$(uname -s)
+	# WSL reports Linux, but its usable browsers live on the Windows side:
+	if [ "$OS" = Linux ] && { [ -n "$WSL_DISTRO_NAME" ] || grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; }; then
+		OS=WSL
+	fi
 	case "$OS" in
 	Linux)
 		cache="${XDG_CACHE_HOME:-$HOME/.cache}/btctick"
@@ -102,36 +149,47 @@ launch_gui() {
 			echo 'ERROR: No graphical display found, GUI not available here. Terminal output above is all yours!'
 			return 1
 		fi ;;
-	Darwin)
-		cache="$HOME/Library/Caches/btctick" ;;
+	WSL)   cache="${XDG_CACHE_HOME:-$HOME/.cache}/btctick" ;;
+	Darwin) cache="$HOME/Library/Caches/btctick" ;;
 	*)
-		echo "ERROR: GUI mode supports Linux and macOS only (this system: $OS)."
+		echo "ERROR: GUI mode supports Linux, WSL and macOS only (this system: $OS)."
 		return 1 ;;
 	esac
 	mkdir -p "$cache"
-	gui_page > "$cache/btctick.html"
+	page="$cache/btctick.html"
+	gui_page > "$page"
 
+	# 1st choice: a small app-style window in a Chromium-family browser.
 	if browser=$(find_app_browser); then
 		# Separate small profile: guarantees the window size is honoured and
 		# keeps the user's own browser session untouched.
 		profile="$cache/browser-profile"
-		# Snap-packaged browsers can't access hidden folders like ~/.cache:
-		if [[ $(readlink -f "$browser") == */snapd* ]]; then
+		if [ "$OS" = WSL ]; then
+			# Windows browsers need a Windows folder for the profile:
+			local appdata
+			appdata=$(cd /mnt/c 2>/dev/null || cd /; cmd.exe /c "echo %LOCALAPPDATA%" 2>/dev/null | tr -d '\r')
+			profile="${appdata:-C:\\Temp}\\btctick\\browser-profile"
+		elif [[ $(readlink -f "$browser") == */snapd* ]]; then
+			# Snap-packaged browsers can't access hidden folders like ~/.cache:
 			profile="$HOME/snap/$(basename "$browser")/common/btctick-profile"
 		fi
 		# Page is passed inline as a data: URL, so file access never matters.
-		url="data:text/html;charset=utf-8;base64,$(base64 < "$cache/btctick.html" | tr -d '\n')"
-		nohup "$browser" --app="$url" --window-size=$GUI_W,$GUI_H \
-			--user-data-dir="$profile" --no-first-run --no-default-browser-check \
-			>/dev/null 2>&1 &
-		echo "INFO: GUI opened in a small $(basename "$browser") window."
-	else
-		# No app-capable browser (e.g. Firefox only): use the default browser.
-		if [ "$OS" = Darwin ]; then
-			open "$cache/btctick.html"
-		else
-			nohup xdg-open "$cache/btctick.html" >/dev/null 2>&1 &
+		url="data:text/html;charset=utf-8;base64,$(base64 < "$page" | tr -d '\n')"
+		if start_bg "$browser" --app="$url" --window-size=$GUI_W,$GUI_H \
+			--user-data-dir="$profile" --no-first-run --no-default-browser-check; then
+			echo "INFO: GUI opened in a small $(basename "$browser") window."
+			return 0
 		fi
-		echo "INFO: GUI opened in your default browser."
+		echo "INFO: Trying your default browser instead..."
 	fi
+
+	# 2nd choice: the default browser (e.g. when only Firefox is installed).
+	if open_default; then
+		echo "INFO: GUI opened in your default browser."
+		return 0
+	fi
+
+	echo "ERROR: Could not open a browser window for the GUI."
+	echo "       The page is saved here, open it in any browser: $page"
+	return 1
 }
