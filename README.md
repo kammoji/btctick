@@ -55,6 +55,8 @@ Shows the price in a small window, no extra installs needed, just a web browser.
 With Chrome, Edge, Brave, Vivaldi or Chromium installed you get a compact app-style window;
 otherwise the page opens in your default browser. Combine with -e for EUR.
 
+Also works on Windows via WSL: the window opens in Windows' own Edge or Chrome.
+
 ## Updates:
 
 btctick checks for updates every time it runs and tells you if a newer version is available.
