@@ -12,7 +12,7 @@ cd $SCRIPTPATH
 
 # Date of the latest edit + today's news (one line per entry). Both are shown
 # in the terminal and in the GUI window. Update these together on each edit.
-EDIT_DATE=2026-11-18
+EDIT_DATE=2026-11-20
 NEWS=(
 "btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
 "BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
@@ -119,13 +119,15 @@ then
 	cap_parsed=`fmt $cap`
 	price_parsed=`fmt $price`
 	volume_parsed=`fmt $volume`
-	echo
-	echo "----------"
-	echo "btctick.sh - "$'\u20bf'"itcoin market price ticker"
-	echo "----------"
-	echo
-	echo "You are at btctick master branch edit $EDIT_DATE - default FIAT is USD (\$)."
-	echo "btctick is public domain with NO WARRANTY. Use at your own discretion."
+	# Compact 2-line header: orange ₿ badge + name, then dimmed edit/license line.
+	# Colors only when writing to a terminal, so piped output stays clean text.
+	if [ -t 1 ]; then
+		BADGE=$'\033[1;97;48;5;208m' BOLD=$'\033[1m' DIM=$'\033[2m' RST=$'\033[0m'
+	else
+		BADGE="" BOLD="" DIM="" RST=""
+	fi
+	echo "${BADGE} ₿ ${RST} ${BOLD}btctick${RST}  Bitcoin market price ticker"
+	echo "${DIM}    edit $EDIT_DATE · $fiat · public domain, no warranty${RST}"
 	echo
 	prefix="NEWS: "
 	for line in "${NEWS[@]}"; do
