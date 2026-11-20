@@ -129,12 +129,6 @@ then
 	echo "${BADGE} ₿ ${RST} ${BOLD}btctick${RST}  Bitcoin market price ticker"
 	echo "${DIM}    edit $EDIT_DATE · $fiat · public domain, no warranty${RST}"
 	echo
-	prefix="NEWS: "
-	for line in "${NEWS[@]}"; do
-		echo "$prefix$line"
-		prefix="      "
-	done
-	echo
 	date
 	echo "Bitcoin market cap: $sym$cap_parsed"
 	echo "Avg. price across exchanges: $sym$price_parsed"
@@ -142,6 +136,13 @@ then
 	if [ "$fiat" = "EUR" ]; then
 		echo "(Converted from USD at 1 EUR = `printf "%.4f" $eurusd` USD)"
 	fi
+	echo
+	# News after the price figures, same layout as the GUI window:
+	prefix="NEWS: "
+	for line in "${NEWS[@]}"; do
+		echo "$prefix$line"
+		prefix="      "
+	done
 	echo
 	echo "Source: https://coinmarketcap.com"
 	echo "Diggin' it? Support us with some "$'\u20bf'" to address: 1GsBi4t7XyDRoBR2kegDUdNa3CHMVRto6q"
