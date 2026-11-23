@@ -3,6 +3,7 @@
 # Bitcoin ticker
 # Gets bitcoin data from coinmarketcap.com website and outputs data
 # Copyleft Juhana Kammonen 05/2018->
+# Co-author: Claude (Anthropic) 11/2026->
 # btctick is and always will be PUBLIC DOMAIN. Please copy, paste, spread the work!
 
 SCRIPT=$(readlink -f "$0")
@@ -12,9 +13,8 @@ cd $SCRIPTPATH
 
 # Date of the latest edit + today's news (one line per entry). Both are shown
 # in the terminal and in the GUI window. Update these together on each edit.
-EDIT_DATE=2026-11-20
+EDIT_DATE=2026-11-23
 NEWS=(
-"btctick is now supercharged with Claude! Rock-solid price parsing and a brand new EUR mode (-e)."
 "BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
 "In the next four years, we may see it crash all the way to \$200K :D !"
 "Dips are a great chance to stack Sats, visit https://konekettu.fi for opportunities."
