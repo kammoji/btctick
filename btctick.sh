@@ -13,7 +13,7 @@ cd $SCRIPTPATH
 
 # Date of the latest edit + today's news (one line per entry). Both are shown
 # in the terminal and in the GUI window. Update these together on each edit.
-EDIT_DATE=2026-11-23
+EDIT_DATE=2026-11-25
 NEWS=(
 "BTC is 'crashing' toward \$50K - a price we could only dream of 4 years back :D"
 "In the next four years, we may see it crash all the way to \$200K :D !"
