@@ -2,7 +2,7 @@
 
 # Bitcoin ticker
 # Gets bitcoin data from coinmarketcap.com website and outputs data
-# Copyleft Juhana Kammonen 05/2018->
+# Author: @kammoji 05/2018->
 # Co-author: Claude (Anthropic) 11/2026->
 # btctick is and always will be PUBLIC DOMAIN. Please copy, paste, spread the work!
 
@@ -13,12 +13,12 @@ cd $SCRIPTPATH
 
 # Date of the latest edit + today's news (one line per entry). Both are shown
 # in the terminal and in the GUI window. Update these together on each edit.
-EDIT_DATE=2026-11-26
+EDIT_DATE=2026-11-27
 NEWS=(
-"BTC dipped to \$55K this week, leaving a record 11.6M BTC underwater - while whales kept stacking."
-"\$7B in bitcoin options expire Friday, with traders buying downside protection."
-"A bill locking up the U.S. Strategic Bitcoin Reserve for 20 years advances to the full House."
-"Over 1,000 miners were tricked into hashing for a thief via a fake internet route."
+"\$7B in bitcoin options expire today, with the biggest bets leaning bearish."
+"Dormant BTC supply is rising - a pattern seen near past bear-market bottoms."
+"Binance has fully restored withdrawals, four weeks after its \$6.3B hack."
+"A tiny payment can expose the IP address behind a bitcoin wallet, a developer found."
 )
 
 #Spinning icon stuff:
@@ -124,15 +124,25 @@ then
 	# Colors only when writing to a terminal, so piped output stays clean text.
 	if [ -t 1 ]; then
 		BADGE=$'\033[1;97;48;5;208m' BOLD=$'\033[1m' DIM=$'\033[2m' RST=$'\033[0m'
+		GREEN=$'\033[32m' RED=$'\033[31m'
 	else
-		BADGE="" BOLD="" DIM="" RST=""
+		BADGE="" BOLD="" DIM="" RST="" GREEN="" RED=""
 	fi
+	# 24h/7d price change in plain ASCII (+/-) so any terminal can show it;
+	# green when up, red when down, on color terminals only:
+	pct() {
+		[ -z "$1" ] && { printf 'n/a'; return; }
+		case "$1" in -*) printf '%s' "$RED" ;; *) printf '%s' "$GREEN" ;; esac
+		awk -v v="$1" 'BEGIN{ printf "%+.2f%%", v }'
+		printf '%s' "$RST"
+	}
 	echo "${BADGE} ₿ ${RST} ${BOLD}btctick${RST}  Bitcoin market price ticker"
 	echo "${DIM}    edit $EDIT_DATE · $fiat · public domain, no warranty${RST}"
 	echo
 	date
 	echo "Bitcoin market cap: $sym$cap_parsed"
 	echo "Avg. price across exchanges: $sym$price_parsed"
+	echo "Price change: 24h `pct "$ch24"`  7d `pct "$ch7"`"
 	echo "Trading volume (24h): $sym$volume_parsed"
 	if [ "$fiat" = "EUR" ]; then
 		echo "(Converted from USD at 1 EUR = `printf "%.4f" $eurusd` USD)"

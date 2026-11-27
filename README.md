@@ -3,7 +3,7 @@
 <h1 align="center">btctick</h1>
 
 <p align="center"><b>Bitcoin market price ticker for Linux terminals</b><br>
-Copyleft - Juhana K 2018-2026 · Public domain</p>
+Since 2018 · Public domain</p>
 
 ### Happy Bitcoin bear year 2026!
 
