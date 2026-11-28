@@ -13,12 +13,12 @@ cd $SCRIPTPATH
 
 # Date of the latest edit + today's news (one line per entry). Both are shown
 # in the terminal and in the GUI window. Update these together on each edit.
-EDIT_DATE=2026-11-27
+EDIT_DATE=2026-11-28
 NEWS=(
-"\$7B in bitcoin options expire today, with the biggest bets leaning bearish."
-"Dormant BTC supply is rising - a pattern seen near past bear-market bottoms."
-"Binance has fully restored withdrawals, four weeks after its \$6.3B hack."
-"A tiny payment can expose the IP address behind a bitcoin wallet, a developer found."
+"BTC topped \$61K Friday, on course to end a seven-week losing streak."
+"A bitcoin 'death cross' is looming on the charts."
+"Tether added \$10M of miner Bitdeer's stock after an 87% drop."
+"Bybit won't publish the postmortem of its \$1.4B hack."
 )
 
 #Spinning icon stuff:
